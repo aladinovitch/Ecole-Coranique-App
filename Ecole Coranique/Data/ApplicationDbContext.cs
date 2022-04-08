@@ -111,18 +111,18 @@ namespace Ecole_Coranique.Data
 
             modelBuilder.Entity<Groupe>().HasData(
                 new Groupe { Id = 1, Numero = 1, Nom = "Groupe filles", EnseignantId = 3 },
-                new Groupe { Id = 2, Numero = 1, Nom = "Groupe matin", EnseignantId = 4 },
-                new Groupe { Id = 3, Numero = 1, Nom = "Groupe après-midi", EnseignantId = 1 });
+                new Groupe { Id = 2, Numero = 2, Nom = "Groupe matin", EnseignantId = 4 },
+                new Groupe { Id = 3, Numero = 3, Nom = "Groupe après-midi", EnseignantId = 1 });
 
             modelBuilder.Entity<Etudiant>().HasData(
-                new Etudiant { Id = 1, Prenom = "Ahmed", Nom = "Bouhmed", Naissance = DateOnly.Parse("2001-12-11"), Phone = "05 01 01 01", Email = "ahmed.mido@gmail.com", Adresse = "Quartier takbou, Médéa", GroupeId = 3 },
-                new Etudiant { Id = 2, Prenom = "Arezki", Nom = "Benrezki", Naissance = DateOnly.Parse("1978-03-10"), Phone = "05 02 02 02", Email = "arezki.rzk@gmail.com", Adresse = "Quartier des fleurs, Bejaia", GroupeId = 3 },
-                new Etudiant { Id = 3, Prenom = "Amer", Nom = "Bouamer", Naissance = DateOnly.Parse("1963-01-12"), Phone = "05 03 03 03", Email = "amerrr@gmail.com", Adresse = "Quartier Bab el Kouas, Médéa", GroupeId = 3 },
-                new Etudiant { Id = 4, Prenom = "Sofiane", Nom = "Sidou", Naissance = DateOnly.Parse("1990-02-03"), Phone = "05 04 04 04", Email = "so.sidou33@bmail.com", Adresse = "Cité des roches, Réghaia", GroupeId = 2 },
-                new Etudiant { Id = 4, Prenom = "Samiha", Nom = "Smihi", Naissance = DateOnly.Parse("1998-12-12"), Phone = "05 05 05 05", Email = "samimi@gmail.com", Adresse = "Quartier bouloughine, Alger", GroupeId = 1 },
-                new Etudiant { Id = 4, Prenom = "Fatima", Nom = "Boufetoum", Naissance = DateOnly.Parse("2005-02-01"), Phone = "05 06 06 06", Email = "fati.bb@gmail.com", Adresse = "Cité des cinq, Belcourt", GroupeId = 1 },
-                new Etudiant { Id = 4, Prenom = "Samira", Nom = "Bousemar", Naissance = DateOnly.Parse("1999-01-13"), Phone = "05 07 07 07", Email = "bousemar.sam@gmail.com", Adresse = "Route des accacias, Médéa", GroupeId = 1 });
-
+                new Etudiant { Id = 1, Prenom = "Ahmed", Nom = "Bouhmed", Naissance = DateTime.Parse("2001-12-11"), Phone = "05 01 01 01", Email = "ahmed.mido@gmail.com", Adresse = "Quartier takbou, Médéa", GroupeId = 3 },
+                new Etudiant { Id = 2, Prenom = "Arezki", Nom = "Benrezki", Naissance = DateTime.Parse("1978-03-10"), Phone = "05 02 02 02", Email = "arezki.rzk@gmail.com", Adresse = "Quartier des fleurs, Bejaia", GroupeId = 3 },
+                new Etudiant { Id = 3, Prenom = "Amer", Nom = "Bouamer", Naissance = DateTime.Parse("1963-01-12"), Phone = "05 03 03 03", Email = "amerrr@gmail.com", Adresse = "Quartier Bab el Kouas, Médéa", GroupeId = 3 },
+                new Etudiant { Id = 4, Prenom = "Sofiane", Nom = "Sidou", Naissance = DateTime.Parse("1990-02-03"), Phone = "05 04 04 04", Email = "so.sidou33@bmail.com", Adresse = "Cité des roches, Réghaia", GroupeId = 2 },
+                new Etudiant { Id = 5, Prenom = "Samiha", Nom = "Smihi", Naissance = DateTime.Parse("1998-12-12"), Phone = "05 05 05 05", Email = "samimi@gmail.com", Adresse = "Quartier bouloughine, Alger", GroupeId = 1 },
+                new Etudiant { Id = 6, Prenom = "Fatima", Nom = "Boufetoum", Naissance = DateTime.Parse("2005-02-01"), Phone = "05 06 06 06", Email = "fati.bb@gmail.com", Adresse = "Cité des cinq, Belcourt", GroupeId = 1 },
+                new Etudiant { Id = 7, Prenom = "Samira", Nom = "Bousemar", Naissance = DateTime.Parse("1999-01-13"), Phone = "05 07 07 07", Email = "bousemar.sam@gmail.com", Adresse = "Route des accacias, Médéa", GroupeId = 1 });
+            
             modelBuilder.Entity<Absence>().HasData(
                 new Absence { Id = 1, Date = DateTime.Parse("2022-01-01"), Observation = "Occupé", EtudiantId = 3 },
                 new Absence { Id = 2, Date = DateTime.Parse("2022-01-05"), Observation = "Non justifié", EtudiantId = 3 },
@@ -140,6 +140,7 @@ namespace Ecole_Coranique.Data
                 new Huitieme { Id=7, Numero=7, Nom= "السابع" },
                 new Huitieme { Id=8, Numero=8, Nom= "الثامن" });
 
+            // Data from: https://amgpm-4.blogspot.com/
             modelBuilder.Entity<Hizb>().HasData(
                 new Hizb { Id = 1, Numero = 1, Nom = "الحزب 01 - ( الم ذلك ) من سورة البقرة" },
                 new Hizb { Id = 2, Numero = 2, Nom = "الحزب 02 - ( واذا لقوا ) من سورة البقرة" },
@@ -201,8 +202,24 @@ namespace Ecole_Coranique.Data
                 new Hizb { Id = 58, Numero = 58, Nom = "الحزب 58 - ( قل أوحي ) من سورة الجن - سورة المزمل - سورة المدثر - سورة القيمة - سورة الانسان - سورة المرسلات" },
                 new Hizb { Id = 59, Numero = 59, Nom = "الحزب 59 - ( عم يتساءلون ) سورة النبأ - النزعات - عبس - التكوير - الانفطار - المطففين - الانشقاق - البروج - الطارق" },
                 new Hizb { Id = 60, Numero = 60, Nom = "الحزب 60 - ( سبح ) من سورة الأعلى الى سورة الناس" });
-
-
+            
+            modelBuilder.Entity<Revision>().HasData(
+                new Revision { Id = 1, Date = DateTime.Parse("2022-01-10"), EtudiantId = 1, HizbId = 1, HuitiemeId = 1 },
+                new Revision { Id = 2, Date = DateTime.Parse("2022-01-10"), EtudiantId = 2, HizbId = 1, HuitiemeId = 1 },
+                new Revision { Id = 3, Date = DateTime.Parse("2022-01-10"), EtudiantId = 3, HizbId = 1, HuitiemeId = 1 },
+                new Revision { Id = 4, Date = DateTime.Parse("2022-01-10"), EtudiantId = 4, HizbId = 1, HuitiemeId = 1 },
+                new Revision { Id = 5, Date = DateTime.Parse("2022-01-15"), EtudiantId = 1, HizbId = 1, HuitiemeId = 1 },
+                new Revision { Id = 6, Date = DateTime.Parse("2022-01-15"), EtudiantId = 2, HizbId = 1, HuitiemeId = 1 },
+                new Revision { Id = 7, Date = DateTime.Parse("2022-01-15"), EtudiantId = 3, HizbId = 1, HuitiemeId = 2 },
+                new Revision { Id = 8, Date = DateTime.Parse("2022-01-15"), EtudiantId = 4, HizbId = 1, HuitiemeId = 2 },
+                new Revision { Id = 9, Date = DateTime.Parse("2022-01-20"), EtudiantId = 1, HizbId = 1, HuitiemeId = 2 },
+                new Revision { Id = 10, Date = DateTime.Parse("2022-01-20"), EtudiantId = 2, HizbId = 1, HuitiemeId = 2 },
+                new Revision { Id = 11, Date = DateTime.Parse("2022-01-20"), EtudiantId = 3, HizbId = 1, HuitiemeId = 3 },
+                new Revision { Id = 12, Date = DateTime.Parse("2022-01-20"), EtudiantId = 4, HizbId = 1, HuitiemeId = 3 },
+                new Revision { Id = 13, Date = DateTime.Parse("2022-01-21"), EtudiantId = 1, HizbId = 1, HuitiemeId = 2 },
+                new Revision { Id = 14, Date = DateTime.Parse("2022-01-21"), EtudiantId = 2, HizbId = 1, HuitiemeId = 4 },
+                new Revision { Id = 15, Date = DateTime.Parse("2022-01-21"), EtudiantId = 3, HizbId = 1, HuitiemeId = 3 },
+                new Revision { Id = 16, Date = DateTime.Parse("2022-01-21"), EtudiantId = 4, HizbId = 1, HuitiemeId = 4 });
         }
     }
 }

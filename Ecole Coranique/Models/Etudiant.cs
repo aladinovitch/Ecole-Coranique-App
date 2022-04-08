@@ -11,7 +11,7 @@ public class Etudiant
     public string Nom { get; set; }
     [Required]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
-    public DateOnly Naissance { get; set; }
+    public DateTime Naissance { get; set; }
     [Required]
     public string Phone { get; set; }
     public string Email { get; set; }
