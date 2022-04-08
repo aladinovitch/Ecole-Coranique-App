@@ -24,4 +24,6 @@ public class Etudiant
     
     public ICollection<Absence>? EtudiantAbsences { get; set; }
     public ICollection<Revision>? EtudiantRevisions { get; set; }
+
+    public string Fullname => $"{Prenom}, {Nom}";
 }
