@@ -10,31 +10,30 @@
 				<li class="nav-item">
 					<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link text-dark" asp-area="" asp-controller="Revisions" asp-action="Index">Revisions</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Activité</a>
+					<div class="dropdown-menu">
+						<a class="nav-link text-dark" asp-area="" asp-controller="Revisions" asp-action="Index">Révisions</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Absences" asp-action="Index">Absences</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Groupes" asp-action="Index">Groupes</a>
+					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link text-dark" asp-area="" asp-controller="Absences" asp-action="Index">Absences</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Personnes</a>
+					<div class="dropdown-menu">
+						<a class="nav-link text-dark" asp-area="" asp-controller="Etudiants" asp-action="Index">Etudiants</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Enseignants" asp-action="Index">Enseignants</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Groupes" asp-action="Index">Groupes</a>
+					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link text-dark" asp-area="" asp-controller="Groupes" asp-action="Index">Groupes</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-dark" asp-area="" asp-controller="Etudiants" asp-action="Index">Etudiants</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-dark" asp-area="" asp-controller="Enseignants" asp-action="Index">Enseignants</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-dark" asp-area="" asp-controller="Huitiemes" asp-action="Index">Huitieme</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-dark" asp-area="" asp-controller="Hizbs" asp-action="Index">Ahzab</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-				</li>
-			</ul>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Paramètres</a>
+					<div class="dropdown-menu">
+						<a class="nav-link text-dark" asp-area="" asp-controller="Huitiemes" asp-action="Index">Huitième</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Hizbs" asp-action="Index">Ahzab</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+					</div>
+				</ul>
 			<partial name="_LoginPartial" />
 		</div>
 	</div>

@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Ecole_Coranique.Data;
 using Ecole_Coranique.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ecole_Coranique.Controllers
 {
+    [Authorize(Policy=AppPolicyName.Accessing)]
     public class RevisionsController : Controller
     {
         private readonly ApplicationDbContext _context;
