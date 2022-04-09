@@ -17,4 +17,5 @@ public class Enseignant
     public string Adresse { get; set; }
     
     public ICollection<Groupe>? EnseignantGroupes { get; set; }
+    public string Fullname => $"{Prenom}, {Nom}";
 }

@@ -11,23 +11,23 @@ using Ecole_Coranique.Models;
 
 namespace Ecole_Coranique.Controllers
 {
-    public class RevisionsController : Controller
+    public class AbsencesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public RevisionsController(ApplicationDbContext context)
+        public AbsencesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Revisions
+        // GET: Absences
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Revisions.Include(r => r.Etudiant).Include(r => r.Hizb).Include(r => r.Huitieme);
+            var applicationDbContext = _context.Absences.Include(a => a.Etudiant);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Revisions/Details/5
+        // GET: Absences/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,48 +35,42 @@ namespace Ecole_Coranique.Controllers
                 return NotFound();
             }
 
-            var revision = await _context.Revisions
-                .Include(r => r.Etudiant)
-                .Include(r => r.Hizb)
-                .Include(r => r.Huitieme)
+            var absence = await _context.Absences
+                .Include(a => a.Etudiant)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (revision == null)
+            if (absence == null)
             {
                 return NotFound();
             }
 
-            return View(revision);
+            return View(absence);
         }
 
-        // GET: Revisions/Create
+        // GET: Absences/Create
         public IActionResult Create()
         {
             ViewData["EtudiantId"] = new SelectList(_context.Etudiants, "Id", "Fullname");
-            ViewData["HizbId"] = new SelectList(_context.Hizbs, "Id", "Nom");
-            ViewData["HuitiemeId"] = new SelectList(_context.Huitiemes, "Id", "Nom");
             return View();
         }
 
-        // POST: Revisions/Create
+        // POST: Absences/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Date,EtudiantId,HizbId,HuitiemeId")] Revision revision)
+        public async Task<IActionResult> Create([Bind("Id,Date,Observation,EtudiantId")] Absence absence)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(revision);
+                _context.Add(absence);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EtudiantId"] = new SelectList(_context.Etudiants, "Id", "Fullname", revision.EtudiantId);
-            ViewData["HizbId"] = new SelectList(_context.Hizbs, "Id", "Nom", revision.HizbId);
-            ViewData["HuitiemeId"] = new SelectList(_context.Huitiemes, "Id", "Nom", revision.HuitiemeId);
-            return View(revision);
+            ViewData["EtudiantId"] = new SelectList(_context.Etudiants, "Id", "Fullname", absence.EtudiantId);
+            return View(absence);
         }
 
-        // GET: Revisions/Edit/5
+        // GET: Absences/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -84,25 +78,23 @@ namespace Ecole_Coranique.Controllers
                 return NotFound();
             }
 
-            var revision = await _context.Revisions.FindAsync(id);
-            if (revision == null)
+            var absence = await _context.Absences.FindAsync(id);
+            if (absence == null)
             {
                 return NotFound();
             }
-            ViewData["EtudiantId"] = new SelectList(_context.Etudiants, "Id", "Fullname", revision.EtudiantId);
-            ViewData["HizbId"] = new SelectList(_context.Hizbs, "Id", "Nom", revision.HizbId);
-            ViewData["HuitiemeId"] = new SelectList(_context.Huitiemes, "Id", "Nom", revision.HuitiemeId);
-            return View(revision);
+            ViewData["EtudiantId"] = new SelectList(_context.Etudiants, "Id", "Fullname", absence.EtudiantId);
+            return View(absence);
         }
 
-        // POST: Revisions/Edit/5
+        // POST: Absences/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Date,EtudiantId,HizbId,HuitiemeId")] Revision revision)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Date,Observation,EtudiantId")] Absence absence)
         {
-            if (id != revision.Id)
+            if (id != absence.Id)
             {
                 return NotFound();
             }
@@ -111,12 +103,12 @@ namespace Ecole_Coranique.Controllers
             {
                 try
                 {
-                    _context.Update(revision);
+                    _context.Update(absence);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RevisionExists(revision.Id))
+                    if (!AbsenceExists(absence.Id))
                     {
                         return NotFound();
                     }
@@ -127,13 +119,11 @@ namespace Ecole_Coranique.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EtudiantId"] = new SelectList(_context.Etudiants, "Id", "Fullname", revision.EtudiantId);
-            ViewData["HizbId"] = new SelectList(_context.Hizbs, "Id", "Nom", revision.HizbId);
-            ViewData["HuitiemeId"] = new SelectList(_context.Huitiemes, "Id", "Nom", revision.HuitiemeId);
-            return View(revision);
+            ViewData["EtudiantId"] = new SelectList(_context.Etudiants, "Id", "Fullname", absence.EtudiantId);
+            return View(absence);
         }
 
-        // GET: Revisions/Delete/5
+        // GET: Absences/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -141,33 +131,31 @@ namespace Ecole_Coranique.Controllers
                 return NotFound();
             }
 
-            var revision = await _context.Revisions
-                .Include(r => r.Etudiant)
-                .Include(r => r.Hizb)
-                .Include(r => r.Huitieme)
+            var absence = await _context.Absences
+                .Include(a => a.Etudiant)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (revision == null)
+            if (absence == null)
             {
                 return NotFound();
             }
 
-            return View(revision);
+            return View(absence);
         }
 
-        // POST: Revisions/Delete/5
+        // POST: Absences/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var revision = await _context.Revisions.FindAsync(id);
-            _context.Revisions.Remove(revision);
+            var absence = await _context.Absences.FindAsync(id);
+            _context.Absences.Remove(absence);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RevisionExists(int id)
+        private bool AbsenceExists(int id)
         {
-            return _context.Revisions.Any(e => e.Id == id);
+            return _context.Absences.Any(e => e.Id == id);
         }
     }
 }

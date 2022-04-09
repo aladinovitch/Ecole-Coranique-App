@@ -8,6 +8,7 @@ public class Hizb
     [Required]
     public int Numero { get; set; }
     public string Nom { get; set; }
-    
+    public string Description { get; set; }
+
     public ICollection<Revision>? HizbRevisions { get; set; }
 }

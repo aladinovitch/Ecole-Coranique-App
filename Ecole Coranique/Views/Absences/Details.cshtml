@@ -1,4 +1,4 @@
-﻿@model Ecole_Coranique.Models.Revision
+﻿@model Ecole_Coranique.Models.Absence
 
 @{
     ViewData["Title"] = "Details";
@@ -8,15 +8,9 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Revision</h4>
+    <h4>Absence</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Etudiant)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Etudiant.Fullname)
-        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Date)
         </dt>
@@ -24,16 +18,16 @@
             @Html.DisplayFor(model => model.Date)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Huitieme)
+            @Html.DisplayNameFor(model => model.Observation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Huitieme.Nom)
+            @Html.DisplayFor(model => model.Observation)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Hizb)
+            @Html.DisplayNameFor(model => model.Etudiant)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Hizb.Nom)
+            @Html.DisplayFor(model => model.Etudiant.Fullname)
         </dd>
     </dl>
 </div>
