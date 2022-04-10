@@ -12,28 +12,27 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Ecole_Coranique.Controllers
 {
-    [Authorize(Policy=AppPolicyName.Accessing)]
+    [Authorize(Policy = AppPolicyName.Accessing)]
     public class RevisionsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public RevisionsController(ApplicationDbContext context)
-        {
+        public RevisionsController(ApplicationDbContext context) {
             _context = context;
         }
 
         // GET: Revisions
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             var applicationDbContext = _context.Revisions.Include(r => r.Etudiant).Include(r => r.Hizb).Include(r => r.Huitieme);
-            return View(await applicationDbContext.ToListAsync());
+            if (User.HasClaim(AppClaimType.Manager, "true"))
+                return View(await applicationDbContext.ToListAsync());
+            return View("IndexReadOnly", await applicationDbContext.ToListAsync());
         }
 
+        [Authorize(Policy = AppPolicyName.Management)]
         // GET: Revisions/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
+        public async Task<IActionResult> Details(int? id) {
+            if (id == null) {
                 return NotFound();
             }
 
@@ -42,17 +41,16 @@ namespace Ecole_Coranique.Controllers
                 .Include(r => r.Hizb)
                 .Include(r => r.Huitieme)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (revision == null)
-            {
+            if (revision == null) {
                 return NotFound();
             }
 
             return View(revision);
         }
 
+        [Authorize(Policy = AppPolicyName.Management)]
         // GET: Revisions/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             ViewData["EtudiantId"] = new SelectList(_context.Etudiants, "Id", "Fullname");
             ViewData["HizbId"] = new SelectList(_context.Hizbs, "Id", "Nom");
             ViewData["HuitiemeId"] = new SelectList(_context.Huitiemes, "Id", "Nom");
@@ -64,10 +62,8 @@ namespace Ecole_Coranique.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Date,EtudiantId,HizbId,HuitiemeId")] Revision revision)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("Id,Date,EtudiantId,HizbId,HuitiemeId")] Revision revision) {
+            if (ModelState.IsValid) {
                 _context.Add(revision);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -78,17 +74,15 @@ namespace Ecole_Coranique.Controllers
             return View(revision);
         }
 
+        [Authorize(Policy = AppPolicyName.Management)]
         // GET: Revisions/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
+        public async Task<IActionResult> Edit(int? id) {
+            if (id == null) {
                 return NotFound();
             }
 
             var revision = await _context.Revisions.FindAsync(id);
-            if (revision == null)
-            {
+            if (revision == null) {
                 return NotFound();
             }
             ViewData["EtudiantId"] = new SelectList(_context.Etudiants, "Id", "Fullname", revision.EtudiantId);
@@ -102,28 +96,19 @@ namespace Ecole_Coranique.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Date,EtudiantId,HizbId,HuitiemeId")] Revision revision)
-        {
-            if (id != revision.Id)
-            {
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Date,EtudiantId,HizbId,HuitiemeId")] Revision revision) {
+            if (id != revision.Id) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(revision);
                     await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RevisionExists(revision.Id))
-                    {
+                } catch (DbUpdateConcurrencyException) {
+                    if (!RevisionExists(revision.Id)) {
                         return NotFound();
-                    }
-                    else
-                    {
+                    } else {
                         throw;
                     }
                 }
@@ -135,11 +120,10 @@ namespace Ecole_Coranique.Controllers
             return View(revision);
         }
 
+        [Authorize(Policy = AppPolicyName.Management)]
         // GET: Revisions/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
+        public async Task<IActionResult> Delete(int? id) {
+            if (id == null) {
                 return NotFound();
             }
 
@@ -148,8 +132,7 @@ namespace Ecole_Coranique.Controllers
                 .Include(r => r.Hizb)
                 .Include(r => r.Huitieme)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (revision == null)
-            {
+            if (revision == null) {
                 return NotFound();
             }
 
@@ -159,16 +142,14 @@ namespace Ecole_Coranique.Controllers
         // POST: Revisions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
+        public async Task<IActionResult> DeleteConfirmed(int id) {
             var revision = await _context.Revisions.FindAsync(id);
             _context.Revisions.Remove(revision);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RevisionExists(int id)
-        {
+        private bool RevisionExists(int id) {
             return _context.Revisions.Any(e => e.Id == id);
         }
     }
