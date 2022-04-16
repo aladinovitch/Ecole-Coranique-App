@@ -20,51 +20,13 @@ namespace Ecole_Coranique.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Enseignant>().ToTable("Enseignant", "Ecole_Coranique")
-                .HasKey(k => new { k.Id })
-                .HasName("PK_Enseignant");
-
-            modelBuilder.Entity<Enseignant>().ToTable("Enseignant", "Ecole_Coranique")
-                .HasMany(x => x.EnseignantGroupes).WithOne(x => x.Enseignant).HasForeignKey(x => new { x.EnseignantId });
-
-            modelBuilder.Entity<Groupe>().ToTable("Groupe", "Ecole_Coranique")
-                .HasKey(k => new { k.Id })
-                .HasName("PK_Groupe");
-
-            modelBuilder.Entity<Groupe>().ToTable("Groupe", "Ecole_Coranique")
-                .HasMany(x => x.GroupeEtudiants).WithOne(x => x.Groupe).HasForeignKey(x => new { x.GroupeId });
-
-            modelBuilder.Entity<Etudiant>().ToTable("Etudiant", "Ecole_Coranique")
-                .HasKey(k => new { k.Id })
-                .HasName("PK_Etudiant");
-
-            modelBuilder.Entity<Etudiant>().ToTable("Etudiant", "Ecole_Coranique")
-                .HasMany(x => x.EtudiantAbsences).WithOne(x => x.Etudiant).HasForeignKey(x => new { x.EtudiantId });
-            modelBuilder.Entity<Etudiant>().ToTable("Etudiant", "Ecole_Coranique")
-                .HasMany(x => x.EtudiantRevisions).WithOne(x => x.Etudiant).HasForeignKey(x => new { x.EtudiantId });
-
-            modelBuilder.Entity<Huitieme>().ToTable("Huitieme", "Ecole_Coranique")
-                .HasKey(k => new { k.Id })
-                .HasName("PK_Huitieme");
-
-            modelBuilder.Entity<Huitieme>().ToTable("Huitieme", "Ecole_Coranique")
-                .HasMany(x => x.HuitiemeRevisions).WithOne(x => x.Huitieme).HasForeignKey(x => new { x.HuitiemeId });
-
-            modelBuilder.Entity<Hizb>().ToTable("Hizb", "Ecole_Coranique")
-                .HasKey(k => new { k.Id })
-                .HasName("PK_Hizb");
-
-            modelBuilder.Entity<Hizb>().ToTable("Hizb", "Ecole_Coranique")
-                .HasMany(x => x.HizbRevisions).WithOne(x => x.Hizb).HasForeignKey(x => new { x.HizbId });
-
-            modelBuilder.Entity<Absence>().ToTable("Absence", "Ecole_Coranique")
-                .HasKey(k => new { k.Id })
-                .HasName("PK_Absence");
-
-
-            modelBuilder.Entity<Revision>().ToTable("Revision", "Ecole_Coranique")
-                .HasKey(k => new { k.Id })
-                .HasName("PK_Revision");
+            modelBuilder.HasDefaultSchema("EcoleCoranique");
+            modelBuilder.Entity<Enseignant>().HasMany(x => x.EnseignantGroupes).WithOne(x => x.Enseignant).HasForeignKey(x => x.EnseignantId);
+            modelBuilder.Entity<Groupe>().HasMany(x => x.GroupeEtudiants).WithOne(x => x.Groupe).HasForeignKey(x => x.GroupeId);
+            modelBuilder.Entity<Etudiant>().HasMany(x => x.EtudiantAbsences).WithOne(x => x.Etudiant).HasForeignKey(x => x.EtudiantId);
+            modelBuilder.Entity<Etudiant>().HasMany(x => x.EtudiantRevisions).WithOne(x => x.Etudiant).HasForeignKey(x => x.EtudiantId);
+            modelBuilder.Entity<Huitieme>().HasMany(x => x.HuitiemeRevisions).WithOne(x => x.Huitieme).HasForeignKey(x => x.HuitiemeId);
+            modelBuilder.Entity<Hizb>().HasMany(x => x.HizbRevisions).WithOne(x => x.Hizb).HasForeignKey(x => x.HizbId);
 
             SeedUsers(modelBuilder);
             SeedData(modelBuilder);
@@ -122,7 +84,7 @@ namespace Ecole_Coranique.Data
                 new Etudiant { Id = 5, Prenom = "Samiha", Nom = "Smihi", Naissance = DateTime.Parse("1998-12-12"), Phone = "05 05 05 05", Email = "samimi@gmail.com", Adresse = "Quartier bouloughine, Alger", GroupeId = 1 },
                 new Etudiant { Id = 6, Prenom = "Fatima", Nom = "Boufetoum", Naissance = DateTime.Parse("2005-02-01"), Phone = "05 06 06 06", Email = "fati.bb@gmail.com", Adresse = "Cité des cinq, Belcourt", GroupeId = 1 },
                 new Etudiant { Id = 7, Prenom = "Samira", Nom = "Bousemar", Naissance = DateTime.Parse("1999-01-13"), Phone = "05 07 07 07", Email = "bousemar.sam@gmail.com", Adresse = "Route des accacias, Médéa", GroupeId = 1 });
-            
+
             modelBuilder.Entity<Absence>().HasData(
                 new Absence { Id = 1, Date = DateTime.Parse("2022-01-01"), Observation = "Occupé", EtudiantId = 3 },
                 new Absence { Id = 2, Date = DateTime.Parse("2022-01-05"), Observation = "Non justifié", EtudiantId = 3 },
@@ -131,14 +93,14 @@ namespace Ecole_Coranique.Data
                 new Absence { Id = 5, Date = DateTime.Parse("2022-01-12"), Observation = "Occupé", EtudiantId = 4 });
 
             modelBuilder.Entity<Huitieme>().HasData(
-                new Huitieme { Id=1, Numero=1, Nom= "الأول" },
-                new Huitieme { Id=2, Numero=2, Nom= "الثاني" },
-                new Huitieme { Id=3, Numero=3, Nom= "الثالث" },
-                new Huitieme { Id=4, Numero=4, Nom= "الرابع" },
-                new Huitieme { Id=5, Numero=5, Nom= "الخامس" },
-                new Huitieme { Id=6, Numero=6, Nom= "السادس" },
-                new Huitieme { Id=7, Numero=7, Nom= "السابع" },
-                new Huitieme { Id=8, Numero=8, Nom= "الثامن" });
+                new Huitieme { Id = 1, Numero = 1, Nom = "الأول" },
+                new Huitieme { Id = 2, Numero = 2, Nom = "الثاني" },
+                new Huitieme { Id = 3, Numero = 3, Nom = "الثالث" },
+                new Huitieme { Id = 4, Numero = 4, Nom = "الرابع" },
+                new Huitieme { Id = 5, Numero = 5, Nom = "الخامس" },
+                new Huitieme { Id = 6, Numero = 6, Nom = "السادس" },
+                new Huitieme { Id = 7, Numero = 7, Nom = "السابع" },
+                new Huitieme { Id = 8, Numero = 8, Nom = "الثامن" });
 
             // Data from:
             // https://amgpm-4.blogspot.com/
@@ -146,7 +108,7 @@ namespace Ecole_Coranique.Data
             // https://en.wikipedia.org/wiki/Juz%27
 
             modelBuilder.Entity<Hizb>().HasData(
-                new Hizb { Id = 1, Numero = 1, Nom= "الحزب 01", Description = "( ٱلْحَمْدُ لِلَّهِ ) من الفاتحة (1:1) سورة البقرة (2:74)" },
+                new Hizb { Id = 1, Numero = 1, Nom = "الحزب 01", Description = "( ٱلْحَمْدُ لِلَّهِ ) من الفاتحة (1:1) سورة البقرة (2:74)" },
                 new Hizb { Id = 2, Numero = 2, Nom = "الحزب 02", Description = "( واذا لقوا ) من سورة البقرة (2:75) إلى (2:141)" },
                 new Hizb { Id = 3, Numero = 3, Nom = "الحزب 03", Description = "( سيقول السفهاء ) من سورة البقرة (2:142) إلى (2:202)" },
                 new Hizb { Id = 4, Numero = 4, Nom = "الحزب 04", Description = "( واذكرواالله ) من سورة البقرة (2:203) إلى (2:252)" },
@@ -206,7 +168,7 @@ namespace Ecole_Coranique.Data
                 new Hizb { Id = 58, Numero = 58, Nom = "الحزب 58", Description = "( قل أوحي ) من سورة الجن (72:1) إلى سورة المرسلات (77:50)" },
                 new Hizb { Id = 59, Numero = 59, Nom = "الحزب 59", Description = "( عم يتساءلون ) سورة النبأ (78:1) إلى الطارق (86:17)" },
                 new Hizb { Id = 60, Numero = 60, Nom = "الحزب 60", Description = "( سبح ) من سورة الأعلى (87:1) إلى سورة الناس (114:6)" });
-            
+
             modelBuilder.Entity<Revision>().HasData(
                 new Revision { Id = 1, Date = DateTime.Parse("2022-01-10"), EtudiantId = 1, HizbId = 1, HuitiemeId = 1 },
                 new Revision { Id = 2, Date = DateTime.Parse("2022-01-10"), EtudiantId = 2, HizbId = 1, HuitiemeId = 1 },

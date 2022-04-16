@@ -10,11 +10,46 @@ namespace Ecole_Coranique.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
-                name: "Ecole_Coranique");
+                name: "EcoleCoranique");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetUserTokens",
+                newName: "AspNetUserTokens",
+                newSchema: "EcoleCoranique");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetUsers",
+                newName: "AspNetUsers",
+                newSchema: "EcoleCoranique");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetUserRoles",
+                newName: "AspNetUserRoles",
+                newSchema: "EcoleCoranique");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetUserLogins",
+                newName: "AspNetUserLogins",
+                newSchema: "EcoleCoranique");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetUserClaims",
+                newName: "AspNetUserClaims",
+                newSchema: "EcoleCoranique");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetRoles",
+                newName: "AspNetRoles",
+                newSchema: "EcoleCoranique");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetRoleClaims",
+                newName: "AspNetRoleClaims",
+                newSchema: "EcoleCoranique");
 
             migrationBuilder.CreateTable(
-                name: "Enseignant",
-                schema: "Ecole_Coranique",
+                name: "Enseignants",
+                schema: "EcoleCoranique",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -27,12 +62,12 @@ namespace Ecole_Coranique.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Enseignant", x => x.Id);
+                    table.PrimaryKey("PK_Enseignants", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Hizb",
-                schema: "Ecole_Coranique",
+                name: "Hizbs",
+                schema: "EcoleCoranique",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -43,12 +78,12 @@ namespace Ecole_Coranique.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Hizb", x => x.Id);
+                    table.PrimaryKey("PK_Hizbs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Huitieme",
-                schema: "Ecole_Coranique",
+                name: "Huitiemes",
+                schema: "EcoleCoranique",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -58,12 +93,12 @@ namespace Ecole_Coranique.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Huitieme", x => x.Id);
+                    table.PrimaryKey("PK_Huitiemes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Groupe",
-                schema: "Ecole_Coranique",
+                name: "Groupes",
+                schema: "EcoleCoranique",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -74,19 +109,19 @@ namespace Ecole_Coranique.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Groupe", x => x.Id);
+                    table.PrimaryKey("PK_Groupes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Groupe_Enseignant_EnseignantId",
+                        name: "FK_Groupes_Enseignants_EnseignantId",
                         column: x => x.EnseignantId,
-                        principalSchema: "Ecole_Coranique",
-                        principalTable: "Enseignant",
+                        principalSchema: "EcoleCoranique",
+                        principalTable: "Enseignants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Etudiant",
-                schema: "Ecole_Coranique",
+                name: "Etudiants",
+                schema: "EcoleCoranique",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -101,19 +136,19 @@ namespace Ecole_Coranique.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Etudiant", x => x.Id);
+                    table.PrimaryKey("PK_Etudiants", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Etudiant_Groupe_GroupeId",
+                        name: "FK_Etudiants_Groupes_GroupeId",
                         column: x => x.GroupeId,
-                        principalSchema: "Ecole_Coranique",
-                        principalTable: "Groupe",
+                        principalSchema: "EcoleCoranique",
+                        principalTable: "Groupes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Absence",
-                schema: "Ecole_Coranique",
+                name: "Absences",
+                schema: "EcoleCoranique",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -124,19 +159,19 @@ namespace Ecole_Coranique.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Absence", x => x.Id);
+                    table.PrimaryKey("PK_Absences", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Absence_Etudiant_EtudiantId",
+                        name: "FK_Absences_Etudiants_EtudiantId",
                         column: x => x.EtudiantId,
-                        principalSchema: "Ecole_Coranique",
-                        principalTable: "Etudiant",
+                        principalSchema: "EcoleCoranique",
+                        principalTable: "Etudiants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Revision",
-                schema: "Ecole_Coranique",
+                name: "Revisions",
+                schema: "EcoleCoranique",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -148,42 +183,43 @@ namespace Ecole_Coranique.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Revision", x => x.Id);
+                    table.PrimaryKey("PK_Revisions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Revision_Etudiant_EtudiantId",
+                        name: "FK_Revisions_Etudiants_EtudiantId",
                         column: x => x.EtudiantId,
-                        principalSchema: "Ecole_Coranique",
-                        principalTable: "Etudiant",
+                        principalSchema: "EcoleCoranique",
+                        principalTable: "Etudiants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Revision_Hizb_HizbId",
+                        name: "FK_Revisions_Hizbs_HizbId",
                         column: x => x.HizbId,
-                        principalSchema: "Ecole_Coranique",
-                        principalTable: "Hizb",
+                        principalSchema: "EcoleCoranique",
+                        principalTable: "Hizbs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Revision_Huitieme_HuitiemeId",
+                        name: "FK_Revisions_Huitiemes_HuitiemeId",
                         column: x => x.HuitiemeId,
-                        principalSchema: "Ecole_Coranique",
-                        principalTable: "Huitieme",
+                        principalSchema: "EcoleCoranique",
+                        principalTable: "Huitiemes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
+                schema: "EcoleCoranique",
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "39ae74a1-2d9f-4219-af75-2f6146bb7b16", 0, "783199c2-40df-4af5-98d2-e0b3132a2f96", "manager@email.com", true, false, null, "MANAGER@EMAIL.COM", "MANAGER@EMAIL.COM", "AQAAAAEAACcQAAAAEP4VXOvLSrsHRHC2MFv0IRXu06SPxJT7RF5j4LuhCKiEE9bHxoR1xqJ+u1BhdKyYkA==", null, false, "eca48233-95ce-4d0a-83e6-92468e560899", false, "manager@email.com" },
-                    { "5eccea23-6f70-4607-932a-68b66c4dcc68", 0, "9a3772ce-51a1-4d3c-b7a6-a64df4db03f7", "basic@email.com", true, false, null, "BASIC@EMAIL.COM", "BASIC@EMAIL.COM", "AQAAAAEAACcQAAAAEB2Nw3A4LUANi29wTX+/mQSrueYQ/OSaoMtd82TQpqVKp3Z20B/emvJKGdKpR94q5w==", null, false, "ba0eb6f6-2b93-4ae2-9c99-1092fe824c6d", false, "basic@email.com" }
+                    { "95886126-045a-4c18-a257-02d8ff9ffe0e", 0, "da1d9b30-85bd-4ba1-ae35-7dc49a040172", "basic@email.com", true, false, null, "BASIC@EMAIL.COM", "BASIC@EMAIL.COM", "AQAAAAEAACcQAAAAEOSeyj6mXIRcNDDAh4QU/ubo+R4N9y6BtJ3Dq3PxD/Y82IuylQ7XEtdL7ER7LolpWw==", null, false, "df697ef6-e279-47fe-bb43-5af965f055a9", false, "basic@email.com" },
+                    { "ce3ad27a-a79c-4af5-9ac4-f69010bf283b", 0, "5aeee0fb-bccc-44ff-a18f-560bca2d4dd4", "manager@email.com", true, false, null, "MANAGER@EMAIL.COM", "MANAGER@EMAIL.COM", "AQAAAAEAACcQAAAAECqeKQT6XZYWP9JXAM/xSrYqt/srPGIf6uZ29r1Ii8RTNYY5lKFS9WweDvOsXFmVLg==", null, false, "bd7503af-0811-4c20-a770-dff4d8c096df", false, "manager@email.com" }
                 });
 
             migrationBuilder.InsertData(
-                schema: "Ecole_Coranique",
-                table: "Enseignant",
+                schema: "EcoleCoranique",
+                table: "Enseignants",
                 columns: new[] { "Id", "Adresse", "Email", "Nom", "Phone", "Prenom" },
                 values: new object[,]
                 {
@@ -194,8 +230,8 @@ namespace Ecole_Coranique.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
-                schema: "Ecole_Coranique",
-                table: "Hizb",
+                schema: "EcoleCoranique",
+                table: "Hizbs",
                 columns: new[] { "Id", "Description", "Nom", "Numero" },
                 values: new object[,]
                 {
@@ -238,8 +274,8 @@ namespace Ecole_Coranique.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
-                schema: "Ecole_Coranique",
-                table: "Hizb",
+                schema: "EcoleCoranique",
+                table: "Hizbs",
                 columns: new[] { "Id", "Description", "Nom", "Numero" },
                 values: new object[,]
                 {
@@ -270,8 +306,8 @@ namespace Ecole_Coranique.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
-                schema: "Ecole_Coranique",
-                table: "Huitieme",
+                schema: "EcoleCoranique",
+                table: "Huitiemes",
                 columns: new[] { "Id", "Nom", "Numero" },
                 values: new object[,]
                 {
@@ -286,17 +322,18 @@ namespace Ecole_Coranique.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                schema: "EcoleCoranique",
                 table: "AspNetUserClaims",
                 columns: new[] { "Id", "ClaimType", "ClaimValue", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Manager", "true", "39ae74a1-2d9f-4219-af75-2f6146bb7b16" },
-                    { 2, "Basic user", "true", "5eccea23-6f70-4607-932a-68b66c4dcc68" }
+                    { 1, "Manager", "true", "ce3ad27a-a79c-4af5-9ac4-f69010bf283b" },
+                    { 2, "Basic user", "true", "95886126-045a-4c18-a257-02d8ff9ffe0e" }
                 });
 
             migrationBuilder.InsertData(
-                schema: "Ecole_Coranique",
-                table: "Groupe",
+                schema: "EcoleCoranique",
+                table: "Groupes",
                 columns: new[] { "Id", "EnseignantId", "Nom", "Numero" },
                 values: new object[,]
                 {
@@ -306,8 +343,8 @@ namespace Ecole_Coranique.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
-                schema: "Ecole_Coranique",
-                table: "Etudiant",
+                schema: "EcoleCoranique",
+                table: "Etudiants",
                 columns: new[] { "Id", "Adresse", "Email", "GroupeId", "Naissance", "Nom", "Phone", "Prenom" },
                 values: new object[,]
                 {
@@ -321,8 +358,8 @@ namespace Ecole_Coranique.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
-                schema: "Ecole_Coranique",
-                table: "Absence",
+                schema: "EcoleCoranique",
+                table: "Absences",
                 columns: new[] { "Id", "Date", "EtudiantId", "Observation" },
                 values: new object[,]
                 {
@@ -334,8 +371,8 @@ namespace Ecole_Coranique.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
-                schema: "Ecole_Coranique",
-                table: "Revision",
+                schema: "EcoleCoranique",
+                table: "Revisions",
                 columns: new[] { "Id", "Date", "EtudiantId", "HizbId", "HuitiemeId" },
                 values: new object[,]
                 {
@@ -358,91 +395,130 @@ namespace Ecole_Coranique.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Absence_EtudiantId",
-                schema: "Ecole_Coranique",
-                table: "Absence",
+                name: "IX_Absences_EtudiantId",
+                schema: "EcoleCoranique",
+                table: "Absences",
                 column: "EtudiantId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Etudiant_GroupeId",
-                schema: "Ecole_Coranique",
-                table: "Etudiant",
+                name: "IX_Etudiants_GroupeId",
+                schema: "EcoleCoranique",
+                table: "Etudiants",
                 column: "GroupeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Groupe_EnseignantId",
-                schema: "Ecole_Coranique",
-                table: "Groupe",
+                name: "IX_Groupes_EnseignantId",
+                schema: "EcoleCoranique",
+                table: "Groupes",
                 column: "EnseignantId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Revision_EtudiantId",
-                schema: "Ecole_Coranique",
-                table: "Revision",
+                name: "IX_Revisions_EtudiantId",
+                schema: "EcoleCoranique",
+                table: "Revisions",
                 column: "EtudiantId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Revision_HizbId",
-                schema: "Ecole_Coranique",
-                table: "Revision",
+                name: "IX_Revisions_HizbId",
+                schema: "EcoleCoranique",
+                table: "Revisions",
                 column: "HizbId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Revision_HuitiemeId",
-                schema: "Ecole_Coranique",
-                table: "Revision",
+                name: "IX_Revisions_HuitiemeId",
+                schema: "EcoleCoranique",
+                table: "Revisions",
                 column: "HuitiemeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Absence",
-                schema: "Ecole_Coranique");
+                name: "Absences",
+                schema: "EcoleCoranique");
 
             migrationBuilder.DropTable(
-                name: "Revision",
-                schema: "Ecole_Coranique");
+                name: "Revisions",
+                schema: "EcoleCoranique");
 
             migrationBuilder.DropTable(
-                name: "Etudiant",
-                schema: "Ecole_Coranique");
+                name: "Etudiants",
+                schema: "EcoleCoranique");
 
             migrationBuilder.DropTable(
-                name: "Hizb",
-                schema: "Ecole_Coranique");
+                name: "Hizbs",
+                schema: "EcoleCoranique");
 
             migrationBuilder.DropTable(
-                name: "Huitieme",
-                schema: "Ecole_Coranique");
+                name: "Huitiemes",
+                schema: "EcoleCoranique");
 
             migrationBuilder.DropTable(
-                name: "Groupe",
-                schema: "Ecole_Coranique");
+                name: "Groupes",
+                schema: "EcoleCoranique");
 
             migrationBuilder.DropTable(
-                name: "Enseignant",
-                schema: "Ecole_Coranique");
+                name: "Enseignants",
+                schema: "EcoleCoranique");
 
             migrationBuilder.DeleteData(
+                schema: "EcoleCoranique",
                 table: "AspNetUserClaims",
                 keyColumn: "Id",
                 keyValue: 1);
 
             migrationBuilder.DeleteData(
+                schema: "EcoleCoranique",
                 table: "AspNetUserClaims",
                 keyColumn: "Id",
                 keyValue: 2);
 
             migrationBuilder.DeleteData(
+                schema: "EcoleCoranique",
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "39ae74a1-2d9f-4219-af75-2f6146bb7b16");
+                keyValue: "95886126-045a-4c18-a257-02d8ff9ffe0e");
 
             migrationBuilder.DeleteData(
+                schema: "EcoleCoranique",
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "5eccea23-6f70-4607-932a-68b66c4dcc68");
+                keyValue: "ce3ad27a-a79c-4af5-9ac4-f69010bf283b");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetUserTokens",
+                schema: "EcoleCoranique",
+                newName: "AspNetUserTokens");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetUsers",
+                schema: "EcoleCoranique",
+                newName: "AspNetUsers");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetUserRoles",
+                schema: "EcoleCoranique",
+                newName: "AspNetUserRoles");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetUserLogins",
+                schema: "EcoleCoranique",
+                newName: "AspNetUserLogins");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetUserClaims",
+                schema: "EcoleCoranique",
+                newName: "AspNetUserClaims");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetRoles",
+                schema: "EcoleCoranique",
+                newName: "AspNetRoles");
+
+            migrationBuilder.RenameTable(
+                name: "AspNetRoleClaims",
+                schema: "EcoleCoranique",
+                newName: "AspNetRoleClaims");
         }
     }
 }

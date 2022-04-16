@@ -17,6 +17,7 @@ namespace Ecole_Coranique.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("EcoleCoranique")
                 .HasAnnotation("ProductVersion", "6.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -40,12 +41,11 @@ namespace Ecole_Coranique.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id")
-                        .HasName("PK_Absence");
+                    b.HasKey("Id");
 
                     b.HasIndex("EtudiantId");
 
-                    b.ToTable("Absence", "Ecole_Coranique");
+                    b.ToTable("Absences", "EcoleCoranique");
 
                     b.HasData(
                         new
@@ -113,10 +113,9 @@ namespace Ecole_Coranique.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id")
-                        .HasName("PK_Enseignant");
+                    b.HasKey("Id");
 
-                    b.ToTable("Enseignant", "Ecole_Coranique");
+                    b.ToTable("Enseignants", "EcoleCoranique");
 
                     b.HasData(
                         new
@@ -191,12 +190,11 @@ namespace Ecole_Coranique.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id")
-                        .HasName("PK_Etudiant");
+                    b.HasKey("Id");
 
                     b.HasIndex("GroupeId");
 
-                    b.ToTable("Etudiant", "Ecole_Coranique");
+                    b.ToTable("Etudiants", "EcoleCoranique");
 
                     b.HasData(
                         new
@@ -296,12 +294,11 @@ namespace Ecole_Coranique.Data.Migrations
                     b.Property<int>("Numero")
                         .HasColumnType("int");
 
-                    b.HasKey("Id")
-                        .HasName("PK_Groupe");
+                    b.HasKey("Id");
 
                     b.HasIndex("EnseignantId");
 
-                    b.ToTable("Groupe", "Ecole_Coranique");
+                    b.ToTable("Groupes", "EcoleCoranique");
 
                     b.HasData(
                         new
@@ -346,10 +343,9 @@ namespace Ecole_Coranique.Data.Migrations
                     b.Property<int>("Numero")
                         .HasColumnType("int");
 
-                    b.HasKey("Id")
-                        .HasName("PK_Hizb");
+                    b.HasKey("Id");
 
-                    b.ToTable("Hizb", "Ecole_Coranique");
+                    b.ToTable("Hizbs", "EcoleCoranique");
 
                     b.HasData(
                         new
@@ -789,10 +785,9 @@ namespace Ecole_Coranique.Data.Migrations
                     b.Property<int>("Numero")
                         .HasColumnType("int");
 
-                    b.HasKey("Id")
-                        .HasName("PK_Huitieme");
+                    b.HasKey("Id");
 
-                    b.ToTable("Huitieme", "Ecole_Coranique");
+                    b.ToTable("Huitiemes", "EcoleCoranique");
 
                     b.HasData(
                         new
@@ -865,8 +860,7 @@ namespace Ecole_Coranique.Data.Migrations
                     b.Property<int>("HuitiemeId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id")
-                        .HasName("PK_Revision");
+                    b.HasKey("Id");
 
                     b.HasIndex("EtudiantId");
 
@@ -874,7 +868,7 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasIndex("HuitiemeId");
 
-                    b.ToTable("Revision", "Ecole_Coranique");
+                    b.ToTable("Revisions", "EcoleCoranique");
 
                     b.HasData(
                         new
@@ -1031,7 +1025,7 @@ namespace Ecole_Coranique.Data.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("AspNetRoles", (string)null);
+                    b.ToTable("AspNetRoles", "EcoleCoranique");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1056,7 +1050,7 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetRoleClaims", (string)null);
+                    b.ToTable("AspNetRoleClaims", "EcoleCoranique");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
@@ -1121,38 +1115,38 @@ namespace Ecole_Coranique.Data.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("AspNetUsers", (string)null);
+                    b.ToTable("AspNetUsers", "EcoleCoranique");
 
                     b.HasData(
                         new
                         {
-                            Id = "39ae74a1-2d9f-4219-af75-2f6146bb7b16",
+                            Id = "ce3ad27a-a79c-4af5-9ac4-f69010bf283b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "783199c2-40df-4af5-98d2-e0b3132a2f96",
+                            ConcurrencyStamp = "5aeee0fb-bccc-44ff-a18f-560bca2d4dd4",
                             Email = "manager@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MANAGER@EMAIL.COM",
                             NormalizedUserName = "MANAGER@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP4VXOvLSrsHRHC2MFv0IRXu06SPxJT7RF5j4LuhCKiEE9bHxoR1xqJ+u1BhdKyYkA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECqeKQT6XZYWP9JXAM/xSrYqt/srPGIf6uZ29r1Ii8RTNYY5lKFS9WweDvOsXFmVLg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "eca48233-95ce-4d0a-83e6-92468e560899",
+                            SecurityStamp = "bd7503af-0811-4c20-a770-dff4d8c096df",
                             TwoFactorEnabled = false,
                             UserName = "manager@email.com"
                         },
                         new
                         {
-                            Id = "5eccea23-6f70-4607-932a-68b66c4dcc68",
+                            Id = "95886126-045a-4c18-a257-02d8ff9ffe0e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9a3772ce-51a1-4d3c-b7a6-a64df4db03f7",
+                            ConcurrencyStamp = "da1d9b30-85bd-4ba1-ae35-7dc49a040172",
                             Email = "basic@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "BASIC@EMAIL.COM",
                             NormalizedUserName = "BASIC@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEB2Nw3A4LUANi29wTX+/mQSrueYQ/OSaoMtd82TQpqVKp3Z20B/emvJKGdKpR94q5w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOSeyj6mXIRcNDDAh4QU/ubo+R4N9y6BtJ3Dq3PxD/Y82IuylQ7XEtdL7ER7LolpWw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ba0eb6f6-2b93-4ae2-9c99-1092fe824c6d",
+                            SecurityStamp = "df697ef6-e279-47fe-bb43-5af965f055a9",
                             TwoFactorEnabled = false,
                             UserName = "basic@email.com"
                         });
@@ -1180,7 +1174,7 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserClaims", (string)null);
+                    b.ToTable("AspNetUserClaims", "EcoleCoranique");
 
                     b.HasData(
                         new
@@ -1188,14 +1182,14 @@ namespace Ecole_Coranique.Data.Migrations
                             Id = 1,
                             ClaimType = "Manager",
                             ClaimValue = "true",
-                            UserId = "39ae74a1-2d9f-4219-af75-2f6146bb7b16"
+                            UserId = "ce3ad27a-a79c-4af5-9ac4-f69010bf283b"
                         },
                         new
                         {
                             Id = 2,
                             ClaimType = "Basic user",
                             ClaimValue = "true",
-                            UserId = "5eccea23-6f70-4607-932a-68b66c4dcc68"
+                            UserId = "95886126-045a-4c18-a257-02d8ff9ffe0e"
                         });
                 });
 
@@ -1220,7 +1214,7 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserLogins", (string)null);
+                    b.ToTable("AspNetUserLogins", "EcoleCoranique");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -1235,7 +1229,7 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles", (string)null);
+                    b.ToTable("AspNetUserRoles", "EcoleCoranique");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -1256,7 +1250,7 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AspNetUserTokens", (string)null);
+                    b.ToTable("AspNetUserTokens", "EcoleCoranique");
                 });
 
             modelBuilder.Entity("Ecole_Coranique.Models.Absence", b =>
