@@ -1,61 +1,106 @@
 ﻿@model Ecole_Coranique.Models.Etudiant
 
 @{
-    ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Details</h1>
 
 <div>
-    <h4>Etudiant</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prenom)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prenom)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nom)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nom)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Naissance)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Naissance)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Adresse)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Adresse)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Groupe)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Groupe.Nom)
-        </dd>
-    </dl>
+	<h4>Etudiant</h4>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Prenom)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Prenom)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Nom)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Nom)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Naissance)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Naissance)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Phone)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Phone)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Email)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Email)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Adresse)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Adresse)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Groupe)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Groupe.Nom)
+		</dd>
+	</dl>
+	<hr />
+	<div class="alert alert-dismissible alert-warning">
+		<h4 class="alert-heading">Absences</h4>
+	</div>
+	@if (@Model.EtudiantAbsences.Any()) {
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">Date</th>
+					<th scope="col">Observation</th>
+				</tr>
+			</thead>
+			@foreach (var i in @Model.EtudiantAbsences) {
+				<tbody>
+					<tr>
+						<td>@i.Date.Date</td>
+						<td>@i.Observation</td>
+					</tr>
+				</tbody>
+			}
+		</table>
+	} else {
+		<p class="text-warning">Aucune absence</p>
+	}
+	<div class="alert alert-dismissible alert-info">
+		<h4 class="alert-heading">Révisions</h4>
+	</div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Date</th>
+				<th scope="col">Hizb</th>
+				<th scope="col">Huitième</th>
+			</tr>
+		</thead>
+		@foreach (var i in @Model.EtudiantRevisions) {
+			<tbody>
+				<tr>
+					<td>@i.Date</td>
+					<td>@i.Hizb.Nom</td>
+					<td>@i.Huitieme.Nom</td>
+				</tr>
+			</tbody>
+		}
+	</table>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+	<a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+	<a asp-action="Index">Back to List</a>
 </div>
