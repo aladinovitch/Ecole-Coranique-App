@@ -1,13 +1,20 @@
-﻿namespace Ecole_Coranique.Models
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace Ecole_Coranique.Models;
+
+public class AppClaimType
 {
-    public class AppClaimType
-    {
-        public const string Manager = "Manager";
-        public const string Basic = "Basic user";
-    }
-    public class AppPolicyName
-    {
-        public const string Management = "Management";
-        public const string Accessing = "Accessing";
-    }
+    public const string Concern = "Concern";
+}
+public class AppClaimValue
+{
+    public const string Admin = "Admin";
+    public const string Teacher = "Teacher";
+    public const string Student = "Student";
+}
+public class AppPolicyName
+{
+    public const string Administration = "Administration";
+    public const string TeacherTrack = "Teachning activities";
+    public const string StudentTrack = "Student activities";
 }

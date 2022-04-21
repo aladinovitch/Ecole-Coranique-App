@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Ecole_Coranique.Controllers
 {
-    [Authorize(Policy = AppPolicyName.Accessing)]
+    [Authorize(Policy= AppPolicyName.Administration)]
     public class RevisionsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -24,12 +24,9 @@ namespace Ecole_Coranique.Controllers
         // GET: Revisions
         public async Task<IActionResult> Index() {
             var applicationDbContext = _context.Revisions.Include(r => r.Etudiant).Include(r => r.Hizb).Include(r => r.Huitieme);
-            if (User.HasClaim(AppClaimType.Manager, "true"))
-                return View(await applicationDbContext.ToListAsync());
-            return View("IndexReadOnly", await applicationDbContext.ToListAsync());
+            return View(await applicationDbContext.ToListAsync());
         }
 
-        [Authorize(Policy = AppPolicyName.Management)]
         // GET: Revisions/Details/5
         public async Task<IActionResult> Details(int? id) {
             if (id == null) {
@@ -48,7 +45,6 @@ namespace Ecole_Coranique.Controllers
             return View(revision);
         }
 
-        [Authorize(Policy = AppPolicyName.Management)]
         // GET: Revisions/Create
         public IActionResult Create() {
             ViewData["EtudiantId"] = new SelectList(_context.Etudiants, "Id", "Fullname");
@@ -74,7 +70,6 @@ namespace Ecole_Coranique.Controllers
             return View(revision);
         }
 
-        [Authorize(Policy = AppPolicyName.Management)]
         // GET: Revisions/Edit/5
         public async Task<IActionResult> Edit(int? id) {
             if (id == null) {
@@ -120,7 +115,6 @@ namespace Ecole_Coranique.Controllers
             return View(revision);
         }
 
-        [Authorize(Policy = AppPolicyName.Management)]
         // GET: Revisions/Delete/5
         public async Task<IActionResult> Delete(int? id) {
             if (id == null) {

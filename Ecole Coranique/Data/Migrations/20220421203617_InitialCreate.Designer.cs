@@ -12,14 +12,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecole_Coranique.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220416225705_InitialCreate")]
+    [Migration("20220421203617_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("EcoleCoranique")
+                .HasDefaultSchema("ec")
                 .HasAnnotation("ProductVersion", "6.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -47,43 +47,120 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasIndex("EtudiantId");
 
-                    b.ToTable("Absences", "EcoleCoranique");
+                    b.ToTable("Absences", "ec");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             Date = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EtudiantId = 3,
-                            Observation = "Occupé"
+                            EtudiantId = 1,
+                            Observation = "مشغول"
                         },
                         new
                         {
                             Id = 2,
                             Date = new DateTime(2022, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EtudiantId = 3,
-                            Observation = "Non justifié"
+                            EtudiantId = 1,
+                            Observation = "غير مبرر"
                         },
                         new
                         {
                             Id = 3,
                             Date = new DateTime(2022, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EtudiantId = 5,
-                            Observation = "Assistance maternelle"
+                            EtudiantId = 3,
+                            Observation = "شؤون عائلية"
                         },
                         new
                         {
                             Id = 4,
                             Date = new DateTime(2022, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EtudiantId = 3,
-                            Observation = "Circulation"
+                            Observation = "حركة المرور"
                         },
                         new
                         {
                             Id = 5,
                             Date = new DateTime(2022, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EtudiantId = 4,
-                            Observation = "Occupé"
+                            Observation = "عرس"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Date = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EtudiantId = 1,
+                            Observation = "مشغول"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Date = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EtudiantId = 2,
+                            Observation = "غير مبرر"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Date = new DateTime(2022, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EtudiantId = 1,
+                            Observation = "غير مبرر"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Date = new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EtudiantId = 1,
+                            Observation = "خرجة عائلية"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Date = new DateTime(2022, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EtudiantId = 2,
+                            Observation = "نسيان"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Date = new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EtudiantId = 2,
+                            Observation = "مراجعة إمتحان"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Date = new DateTime(2022, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EtudiantId = 2,
+                            Observation = "تفرج مبارات"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Date = new DateTime(2022, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EtudiantId = 4,
+                            Observation = "رحلة"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Date = new DateTime(2022, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EtudiantId = 3,
+                            Observation = "شؤون تجارية"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Date = new DateTime(2022, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EtudiantId = 3,
+                            Observation = "شؤون تجارية"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Date = new DateTime(2022, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EtudiantId = 4,
+                            Observation = "غير مبرر"
                         });
                 });
 
@@ -117,44 +194,44 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Enseignants", "EcoleCoranique");
+                    b.ToTable("Enseignants", "ec");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Adresse = "Quartier Thniet el Hdjer, Médéa",
+                            Adresse = "حي ثنية الحجر، المدية",
                             Email = "sli.mane@gmail.com",
-                            Nom = "Benslimane",
+                            Nom = "سليماني",
                             Phone = "05 10 10 10",
-                            Prenom = "Slimane"
+                            Prenom = "سليمان"
                         },
                         new
                         {
                             Id = 2,
-                            Adresse = "Quartier Ain Dhheb, Médéa",
+                            Adresse = "حي عين الذهب، المدية",
                             Email = "aliben@gmail.co",
-                            Nom = "Benali",
+                            Nom = "بن علي",
                             Phone = "05 20 20 20",
-                            Prenom = "Ali"
+                            Prenom = "علي"
                         },
                         new
                         {
                             Id = 3,
-                            Adresse = "Quartier M'salah, Médéa",
+                            Adresse = "حي المصلى، المدية",
                             Email = "ss.bousahla@gmail.com",
-                            Nom = "Bousahla",
+                            Nom = "سنوسي",
                             Phone = "05 30 30 30",
-                            Prenom = "Souhila"
+                            Prenom = "سهيلة"
                         },
                         new
                         {
                             Id = 4,
-                            Adresse = "Quartier Merdj Echkir, Médéa",
+                            Adresse = "حي مرج الشكير، المدية",
                             Email = "amina.ben@gmail.com",
-                            Nom = "Benyamina",
+                            Nom = "بن يمينة",
                             Phone = "05 40 40 40",
-                            Prenom = "Amina"
+                            Prenom = "أمينة"
                         });
                 });
 
@@ -196,85 +273,85 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasIndex("GroupeId");
 
-                    b.ToTable("Etudiants", "EcoleCoranique");
+                    b.ToTable("Etudiants", "ec");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Adresse = "Quartier takbou, Médéa",
+                            Adresse = "حي تاكبو، المدية",
                             Email = "ahmed.mido@gmail.com",
                             GroupeId = 3,
                             Naissance = new DateTime(2001, 12, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nom = "Bouhmed",
+                            Nom = "بوحمد",
                             Phone = "05 01 01 01",
-                            Prenom = "Ahmed"
+                            Prenom = "أحمد"
                         },
                         new
                         {
                             Id = 2,
-                            Adresse = "Quartier des fleurs, Bejaia",
+                            Adresse = "حي الزهور، بجاية",
                             Email = "arezki.rzk@gmail.com",
                             GroupeId = 3,
                             Naissance = new DateTime(1978, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nom = "Benrezki",
+                            Nom = "بن رزقي",
                             Phone = "05 02 02 02",
-                            Prenom = "Arezki"
+                            Prenom = "أرزقي"
                         },
                         new
                         {
                             Id = 3,
-                            Adresse = "Quartier Bab el Kouas, Médéa",
+                            Adresse = "حى باب القواس، المدية",
                             Email = "amerrr@gmail.com",
                             GroupeId = 3,
                             Naissance = new DateTime(1963, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nom = "Bouamer",
+                            Nom = "بوعمر",
                             Phone = "05 03 03 03",
-                            Prenom = "Amer"
+                            Prenom = "عمر"
                         },
                         new
                         {
                             Id = 4,
-                            Adresse = "Cité des roches, Réghaia",
+                            Adresse = "مدينة الصخور، الرغاية",
                             Email = "so.sidou33@bmail.com",
                             GroupeId = 2,
                             Naissance = new DateTime(1990, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nom = "Sidou",
+                            Nom = "سيدو",
                             Phone = "05 04 04 04",
-                            Prenom = "Sofiane"
+                            Prenom = "سفيان"
                         },
                         new
                         {
                             Id = 5,
-                            Adresse = "Quartier bouloughine, Alger",
+                            Adresse = "حي بولوغين، الجزائر العاصمة",
                             Email = "samimi@gmail.com",
                             GroupeId = 1,
                             Naissance = new DateTime(1998, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nom = "Smihi",
+                            Nom = "سليمة",
                             Phone = "05 05 05 05",
-                            Prenom = "Samiha"
+                            Prenom = "سميحة"
                         },
                         new
                         {
                             Id = 6,
-                            Adresse = "Cité des cinq, Belcourt",
+                            Adresse = "حي خمسة منازل، الجزائر العاصمة",
                             Email = "fati.bb@gmail.com",
                             GroupeId = 1,
                             Naissance = new DateTime(2005, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nom = "Boufetoum",
+                            Nom = "بوفطوم",
                             Phone = "05 06 06 06",
-                            Prenom = "Fatima"
+                            Prenom = "فاطمة"
                         },
                         new
                         {
                             Id = 7,
-                            Adresse = "Route des accacias, Médéa",
+                            Adresse = "طريق الأكاسيا، المدية",
                             Email = "bousemar.sam@gmail.com",
                             GroupeId = 1,
                             Naissance = new DateTime(1999, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nom = "Bousemar",
+                            Nom = "بو سمار",
                             Phone = "05 07 07 07",
-                            Prenom = "Samira"
+                            Prenom = "سميرة"
                         });
                 });
 
@@ -300,28 +377,28 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasIndex("EnseignantId");
 
-                    b.ToTable("Groupes", "EcoleCoranique");
+                    b.ToTable("Groupes", "ec");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             EnseignantId = 3,
-                            Nom = "Groupe filles",
+                            Nom = "مجموعة البنات",
                             Numero = 1
                         },
                         new
                         {
                             Id = 2,
                             EnseignantId = 4,
-                            Nom = "Groupe matin",
+                            Nom = "مجموعة الصباح",
                             Numero = 2
                         },
                         new
                         {
                             Id = 3,
                             EnseignantId = 1,
-                            Nom = "Groupe après-midi",
+                            Nom = "مجموعة المساء",
                             Numero = 3
                         });
                 });
@@ -347,7 +424,7 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Hizbs", "EcoleCoranique");
+                    b.ToTable("Hizbs", "ec");
 
                     b.HasData(
                         new
@@ -789,7 +866,7 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Huitiemes", "EcoleCoranique");
+                    b.ToTable("Huitiemes", "ec");
 
                     b.HasData(
                         new
@@ -870,7 +947,7 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasIndex("HuitiemeId");
 
-                    b.ToTable("Revisions", "EcoleCoranique");
+                    b.ToTable("Revisions", "ec");
 
                     b.HasData(
                         new
@@ -1027,7 +1104,7 @@ namespace Ecole_Coranique.Data.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("AspNetRoles", "EcoleCoranique");
+                    b.ToTable("AspNetRoles", "ec");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1052,7 +1129,7 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetRoleClaims", "EcoleCoranique");
+                    b.ToTable("AspNetRoleClaims", "ec");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
@@ -1117,40 +1194,56 @@ namespace Ecole_Coranique.Data.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("AspNetUsers", "EcoleCoranique");
+                    b.ToTable("AspNetUsers", "ec");
 
                     b.HasData(
                         new
                         {
-                            Id = "ce3ad27a-a79c-4af5-9ac4-f69010bf283b",
+                            Id = "166591b3-6b26-4c7b-9ae0-9d77cd7dcef4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5aeee0fb-bccc-44ff-a18f-560bca2d4dd4",
-                            Email = "manager@email.com",
+                            ConcurrencyStamp = "b0251199-555e-4ab7-be74-8eb5c20de876",
+                            Email = "admin@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedEmail = "MANAGER@EMAIL.COM",
-                            NormalizedUserName = "MANAGER@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECqeKQT6XZYWP9JXAM/xSrYqt/srPGIf6uZ29r1Ii8RTNYY5lKFS9WweDvOsXFmVLg==",
+                            NormalizedEmail = "ADMIN@EMAIL.COM",
+                            NormalizedUserName = "ADMIN@EMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKX0DNW1r6Mw1T9dt8IPS0B9T56mBla228SQR8wVF4dTTC3KBXydTPtZXTk0LtM1CA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bd7503af-0811-4c20-a770-dff4d8c096df",
+                            SecurityStamp = "b079c4ed-face-4fed-be83-2d5dd9e1efce",
                             TwoFactorEnabled = false,
-                            UserName = "manager@email.com"
+                            UserName = "admin@email.com"
                         },
                         new
                         {
-                            Id = "95886126-045a-4c18-a257-02d8ff9ffe0e",
+                            Id = "13443be5-483c-4428-bd83-62f41ae1020f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "da1d9b30-85bd-4ba1-ae35-7dc49a040172",
-                            Email = "basic@email.com",
+                            ConcurrencyStamp = "164b4946-eee8-4e91-9879-b89d1aebb513",
+                            Email = "teacher@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedEmail = "BASIC@EMAIL.COM",
-                            NormalizedUserName = "BASIC@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOSeyj6mXIRcNDDAh4QU/ubo+R4N9y6BtJ3Dq3PxD/Y82IuylQ7XEtdL7ER7LolpWw==",
+                            NormalizedEmail = "TEACHER@EMAIL.COM",
+                            NormalizedUserName = "TEACHER@EMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEIgByJN2QFD2yj3QasTM8nIc71vDLY3blHRQqu9ghbXDYe4Sqp3z+lKZH7goL41Rw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "df697ef6-e279-47fe-bb43-5af965f055a9",
+                            SecurityStamp = "5c6dc9b5-9488-43dc-b943-9b2f9c296f4f",
                             TwoFactorEnabled = false,
-                            UserName = "basic@email.com"
+                            UserName = "teacher@email.com"
+                        },
+                        new
+                        {
+                            Id = "4aab8ad2-2f32-41a6-942d-f606b89cfc88",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "07edb3bc-e438-48ad-995b-5fc6486b0097",
+                            Email = "student@email.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "STUDENT@EMAIL.COM",
+                            NormalizedUserName = "STUDENT@EMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIaQjHp0lxvVFhlvSuroKqlyI2dZCRNRNB4OFkHtTD1vKkDi7vN66dITDsQvupYbOg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "85f0ac7f-6058-4e02-a76a-9f07e3a7ba64",
+                            TwoFactorEnabled = false,
+                            UserName = "student@email.com"
                         });
                 });
 
@@ -1176,22 +1269,29 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserClaims", "EcoleCoranique");
+                    b.ToTable("AspNetUserClaims", "ec");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            ClaimType = "Manager",
-                            ClaimValue = "true",
-                            UserId = "ce3ad27a-a79c-4af5-9ac4-f69010bf283b"
+                            ClaimType = "Concern",
+                            ClaimValue = "Admin",
+                            UserId = "166591b3-6b26-4c7b-9ae0-9d77cd7dcef4"
                         },
                         new
                         {
                             Id = 2,
-                            ClaimType = "Basic user",
-                            ClaimValue = "true",
-                            UserId = "95886126-045a-4c18-a257-02d8ff9ffe0e"
+                            ClaimType = "Concern",
+                            ClaimValue = "Teacher",
+                            UserId = "13443be5-483c-4428-bd83-62f41ae1020f"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ClaimType = "Concern",
+                            ClaimValue = "Student",
+                            UserId = "4aab8ad2-2f32-41a6-942d-f606b89cfc88"
                         });
                 });
 
@@ -1216,7 +1316,7 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserLogins", "EcoleCoranique");
+                    b.ToTable("AspNetUserLogins", "ec");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -1231,7 +1331,7 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles", "EcoleCoranique");
+                    b.ToTable("AspNetUserRoles", "ec");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -1252,7 +1352,7 @@ namespace Ecole_Coranique.Data.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AspNetUserTokens", "EcoleCoranique");
+                    b.ToTable("AspNetUserTokens", "ec");
                 });
 
             modelBuilder.Entity("Ecole_Coranique.Models.Absence", b =>

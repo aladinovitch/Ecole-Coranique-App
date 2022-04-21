@@ -1,6 +1,6 @@
 ﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
 	<div class="container-fluid">
-		<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Ecole_Coranique</a>
+		<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">المدرسة القرآنية</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
 				aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -8,32 +8,39 @@
 		<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
 			<ul class="navbar-nav flex-grow-1">
 				<li class="nav-item">
-					<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+					<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">الصفحة الرئيسية</a>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Activités</a>
+					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">الأنشطة</a>
 					<div class="dropdown-menu">
-						<a class="nav-link text-dark" asp-area="" asp-controller="Revisions" asp-action="Index">Révisions</a>
-						<a class="nav-link text-dark" asp-area="" asp-controller="Absences" asp-action="Index">Absences</a>
-						<a class="nav-link text-dark" asp-area="" asp-controller="Groupes" asp-action="Index">Groupes</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Revisions" asp-action="Index">مراجعات</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Absences" asp-action="Index">غيابات</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Groupes" asp-action="Index">مجموعات</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Personnes</a>
+					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">الأشخاص</a>
 					<div class="dropdown-menu">
-						<a class="nav-link text-dark" asp-area="" asp-controller="Etudiants" asp-action="Index">Etudiants</a>
-						<a class="nav-link text-dark" asp-area="" asp-controller="Enseignants" asp-action="Index">Enseignants</a>
-						<a class="nav-link text-dark" asp-area="" asp-controller="Groupes" asp-action="Index">Groupes</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Etudiants" asp-action="Index">طلاب</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Enseignants" asp-action="Index">مدرسين</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Paramètres</a>
+					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">الإعدادات</a>
 					<div class="dropdown-menu">
-						<a class="nav-link text-dark" asp-area="" asp-controller="Huitiemes" asp-action="Index">Huitième</a>
-						<a class="nav-link text-dark" asp-area="" asp-controller="Hizbs" asp-action="Index">Ahzab</a>
-						<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Huitiemes" asp-action="Index">أثمان</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Hizbs" asp-action="Index">أحزاب</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">خصوصية</a>
 					</div>
-				</ul>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">المسار</a>
+					<div class="dropdown-menu">
+						<a class="nav-link text-dark" asp-area="" asp-controller="Tracking" asp-action="StudentTrack" asp-route-id=1>الطالب</a>
+						<a class="nav-link text-dark" asp-area="" asp-controller="Tracking" asp-action="TeachertTrack" asp-route-id=1>المدرس</a>
+					</div>
+				</li>
+			</ul>
 			<partial name="_LoginPartial" />
 		</div>
 	</div>

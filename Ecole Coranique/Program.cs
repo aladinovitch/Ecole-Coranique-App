@@ -17,12 +17,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 builder.Services.AddAuthorization(options => {
     options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-    options.AddPolicy(AppPolicyName.Management, policy => policy.RequireClaim(AppClaimType.Manager, "true"));
-    options.AddPolicy(AppPolicyName.Accessing, policy => policy.RequireAssertion(
-        context => context.User.HasClaim(
-            c =>
-            c.Type == AppClaimType.Manager ||
-            c.Type == AppClaimType.Basic)));
+    options.AddPolicy(AppPolicyName.Administration, policy => policy
+    .RequireClaim(AppClaimType.Concern, AppClaimValue.Admin));
+    options.AddPolicy(AppPolicyName.TeacherTrack, policy => policy
+    .RequireClaim(AppClaimType.Concern, AppClaimValue.Admin, AppClaimValue.Teacher));
+    options.AddPolicy(AppPolicyName.StudentTrack, policy => policy
+    .RequireClaim(AppClaimType.Concern, AppClaimValue.Admin, AppClaimValue.Teacher, AppClaimValue.Student));
 });
 
 var app = builder.Build();
