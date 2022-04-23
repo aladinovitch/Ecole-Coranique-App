@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Ecole_Coranique.Controllers
 {
-    [Authorize(Policy= AppPolicyName.Administration)]
+    [Authorize(Policy = AppPolicyName.Administration)]
     public class RevisionsController : Controller
     {
         private readonly ApplicationDbContext _context;

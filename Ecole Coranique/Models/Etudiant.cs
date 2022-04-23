@@ -23,16 +23,13 @@ public class Etudiant
     [Required]
     [Display(Name = "العنوان")]
     public string Adresse { get; set; }
-    public string IdentityUserId { get; set; }
     [Required]
     [Display(Name = "المجموعة")]
     public int GroupeId { get; set; }
-
     [Display(Name = "المجموعة")]
     public Groupe? Groupe { get; set; }
-    
+    public IdentificationEtudiant? Identification { get; set; }
     public ICollection<Absence>? EtudiantAbsences { get; set; }
     public ICollection<Revision>? EtudiantRevisions { get; set; }
-
     public string Fullname => $"{Prenom}, {Nom}";
 }

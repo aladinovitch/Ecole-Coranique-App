@@ -20,8 +20,7 @@ public class Enseignant
     [Required]
     [Display(Name = "العنوان")]
     public string Adresse { get; set; }
-    public string IdentityUserId { get; set; }
-
     public ICollection<Groupe>? EnseignantGroupes { get; set; }
+    public IdentificationEnseignant? Identification { get; set; }
     public string Fullname => $"{Prenom}, {Nom}";
 }

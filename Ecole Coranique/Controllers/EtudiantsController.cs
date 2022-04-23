@@ -28,15 +28,18 @@ namespace Ecole_Coranique.Controllers
         }
 
         // GET: Etudiants/Details/5
-        public async Task<IActionResult> Details(int? id) {
-            if (id == null) {
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
                 return NotFound();
             }
 
             var etudiant = await _context.Etudiants
                 .Include(e => e.Groupe)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (etudiant == null) {
+            if (etudiant == null)
+            {
                 return NotFound();
             }
 

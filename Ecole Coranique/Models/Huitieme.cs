@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
 namespace Ecole_Coranique.Models;
 public class Huitieme
 {

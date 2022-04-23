@@ -120,6 +120,33 @@ namespace Ecole_Coranique.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "IdentificationEnseignants",
+                schema: "ec",
+                columns: table => new
+                {
+                    EnseignantId = table.Column<int>(type: "int", nullable: false),
+                    IdentityUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IdentificationEnseignants", x => x.EnseignantId);
+                    table.ForeignKey(
+                        name: "FK_IdentificationEnseignants_AspNetUsers_IdentityUserId",
+                        column: x => x.IdentityUserId,
+                        principalSchema: "ec",
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_IdentificationEnseignants_Enseignants_EnseignantId",
+                        column: x => x.EnseignantId,
+                        principalSchema: "ec",
+                        principalTable: "Enseignants",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Etudiants",
                 schema: "ec",
                 columns: table => new
@@ -162,6 +189,33 @@ namespace Ecole_Coranique.Data.Migrations
                     table.PrimaryKey("PK_Absences", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Absences_Etudiants_EtudiantId",
+                        column: x => x.EtudiantId,
+                        principalSchema: "ec",
+                        principalTable: "Etudiants",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IdentificationEtudiants",
+                schema: "ec",
+                columns: table => new
+                {
+                    EtudiantId = table.Column<int>(type: "int", nullable: false),
+                    IdentityUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IdentificationEtudiants", x => x.EtudiantId);
+                    table.ForeignKey(
+                        name: "FK_IdentificationEtudiants_AspNetUsers_IdentityUserId",
+                        column: x => x.IdentityUserId,
+                        principalSchema: "ec",
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_IdentificationEtudiants_Etudiants_EtudiantId",
                         column: x => x.EtudiantId,
                         principalSchema: "ec",
                         principalTable: "Etudiants",
@@ -213,9 +267,9 @@ namespace Ecole_Coranique.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "13443be5-483c-4428-bd83-62f41ae1020f", 0, "164b4946-eee8-4e91-9879-b89d1aebb513", "teacher@email.com", true, false, null, "TEACHER@EMAIL.COM", "TEACHER@EMAIL.COM", "AQAAAAEAACcQAAAAEEIgByJN2QFD2yj3QasTM8nIc71vDLY3blHRQqu9ghbXDYe4Sqp3z+lKZH7goL41Rw==", null, false, "5c6dc9b5-9488-43dc-b943-9b2f9c296f4f", false, "teacher@email.com" },
-                    { "166591b3-6b26-4c7b-9ae0-9d77cd7dcef4", 0, "b0251199-555e-4ab7-be74-8eb5c20de876", "admin@email.com", true, false, null, "ADMIN@EMAIL.COM", "ADMIN@EMAIL.COM", "AQAAAAEAACcQAAAAEKX0DNW1r6Mw1T9dt8IPS0B9T56mBla228SQR8wVF4dTTC3KBXydTPtZXTk0LtM1CA==", null, false, "b079c4ed-face-4fed-be83-2d5dd9e1efce", false, "admin@email.com" },
-                    { "4aab8ad2-2f32-41a6-942d-f606b89cfc88", 0, "07edb3bc-e438-48ad-995b-5fc6486b0097", "student@email.com", true, false, null, "STUDENT@EMAIL.COM", "STUDENT@EMAIL.COM", "AQAAAAEAACcQAAAAEIaQjHp0lxvVFhlvSuroKqlyI2dZCRNRNB4OFkHtTD1vKkDi7vN66dITDsQvupYbOg==", null, false, "85f0ac7f-6058-4e02-a76a-9f07e3a7ba64", false, "student@email.com" }
+                    { "2a04d8a3-e257-437f-ac57-0c3e21d4a170", 0, "cb0d5a21-e777-4d96-aa95-66deda2b3b13", "admin@email.com", true, false, null, "ADMIN@EMAIL.COM", "ADMIN@EMAIL.COM", "AQAAAAEAACcQAAAAEHvC3P3ZDoP+iijNsxuMIe8YJJCHJUS4WWQt9bpjhG7ywd4Aw9dM2bbh0oxXM0CBCw==", null, false, "d78d6735-ffd1-4cb5-83a0-2eeab577de40", false, "admin@email.com" },
+                    { "4241c993-9d51-4d18-a8a0-eb8aad3c0c74", 0, "b580a9bf-a6c4-42f0-a815-e767c4fd6df1", "teacher@email.com", true, false, null, "TEACHER@EMAIL.COM", "TEACHER@EMAIL.COM", "AQAAAAEAACcQAAAAECT1sA4tYyApdNf+gJEs2JGqkbas+6D68f8YTAlLPCxdt5J4ZaUGWXUUj2A/pWMuQw==", null, false, "1285a9d5-db80-49e1-a7db-474bb6e21cfc", false, "teacher@email.com" },
+                    { "e160b8ab-1c5b-45bb-8b04-2a885209cad3", 0, "e79cff7b-53f4-4582-948e-38ad546deeef", "student@email.com", true, false, null, "STUDENT@EMAIL.COM", "STUDENT@EMAIL.COM", "AQAAAAEAACcQAAAAELRoRhtwFp1GOjctO/VN2FaAyB3oQx9ReHgrm8k6aqxqGACauVsjfyf3sIWru2eUfw==", null, false, "c41f515d-8d82-4261-9e33-2994cff3ce2f", false, "student@email.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -328,9 +382,9 @@ namespace Ecole_Coranique.Data.Migrations
                 columns: new[] { "Id", "ClaimType", "ClaimValue", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Concern", "Admin", "166591b3-6b26-4c7b-9ae0-9d77cd7dcef4" },
-                    { 2, "Concern", "Teacher", "13443be5-483c-4428-bd83-62f41ae1020f" },
-                    { 3, "Concern", "Student", "4aab8ad2-2f32-41a6-942d-f606b89cfc88" }
+                    { 1, "Concern", "Admin", "2a04d8a3-e257-437f-ac57-0c3e21d4a170" },
+                    { 2, "Concern", "Teacher", "4241c993-9d51-4d18-a8a0-eb8aad3c0c74" },
+                    { 3, "Concern", "Student", "e160b8ab-1c5b-45bb-8b04-2a885209cad3" }
                 });
 
             migrationBuilder.InsertData(
@@ -426,6 +480,18 @@ namespace Ecole_Coranique.Data.Migrations
                 column: "EnseignantId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_IdentificationEnseignants_IdentityUserId",
+                schema: "ec",
+                table: "IdentificationEnseignants",
+                column: "IdentityUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_IdentificationEtudiants_IdentityUserId",
+                schema: "ec",
+                table: "IdentificationEtudiants",
+                column: "IdentityUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Revisions_EtudiantId",
                 schema: "ec",
                 table: "Revisions",
@@ -448,6 +514,14 @@ namespace Ecole_Coranique.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Absences",
+                schema: "ec");
+
+            migrationBuilder.DropTable(
+                name: "IdentificationEnseignants",
+                schema: "ec");
+
+            migrationBuilder.DropTable(
+                name: "IdentificationEtudiants",
                 schema: "ec");
 
             migrationBuilder.DropTable(
@@ -496,19 +570,19 @@ namespace Ecole_Coranique.Data.Migrations
                 schema: "ec",
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "13443be5-483c-4428-bd83-62f41ae1020f");
+                keyValue: "2a04d8a3-e257-437f-ac57-0c3e21d4a170");
 
             migrationBuilder.DeleteData(
                 schema: "ec",
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "166591b3-6b26-4c7b-9ae0-9d77cd7dcef4");
+                keyValue: "4241c993-9d51-4d18-a8a0-eb8aad3c0c74");
 
             migrationBuilder.DeleteData(
                 schema: "ec",
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "4aab8ad2-2f32-41a6-942d-f606b89cfc88");
+                keyValue: "e160b8ab-1c5b-45bb-8b04-2a885209cad3");
 
             migrationBuilder.RenameTable(
                 name: "AspNetUserTokens",

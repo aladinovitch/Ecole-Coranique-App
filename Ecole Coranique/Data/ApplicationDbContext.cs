@@ -17,6 +17,9 @@ namespace Ecole_Coranique.Data
         public DbSet<Hizb> Hizbs { get; set; }
         public DbSet<Absence> Absences { get; set; }
         public DbSet<Revision> Revisions { get; set; }
+        public DbSet<IdentificationEtudiant> IdentificationEtudiants { get; set; }
+        public DbSet<IdentificationEnseignant> IdentificationEnseignants { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
@@ -27,6 +30,10 @@ namespace Ecole_Coranique.Data
             modelBuilder.Entity<Etudiant>().HasMany(x => x.EtudiantRevisions).WithOne(x => x.Etudiant).HasForeignKey(x => x.EtudiantId);
             modelBuilder.Entity<Huitieme>().HasMany(x => x.HuitiemeRevisions).WithOne(x => x.Huitieme).HasForeignKey(x => x.HuitiemeId);
             modelBuilder.Entity<Hizb>().HasMany(x => x.HizbRevisions).WithOne(x => x.Hizb).HasForeignKey(x => x.HizbId);
+            modelBuilder.Entity<IdentificationEtudiant>().HasKey(x => x.EtudiantId);
+            modelBuilder.Entity<IdentificationEtudiant>().HasOne(x => x.Etudiant).WithOne(x => x.Identification).HasForeignKey<IdentificationEtudiant>(x => x.EtudiantId);
+            modelBuilder.Entity<IdentificationEnseignant>().HasKey(x => x.EnseignantId);
+            modelBuilder.Entity<IdentificationEnseignant>().HasOne(x => x.Enseignant).WithOne(x => x.Identification).HasForeignKey<IdentificationEnseignant>(x => x.EnseignantId);
 
             SeedUsers(modelBuilder);
             SeedData(modelBuilder);

@@ -18,7 +18,7 @@ namespace Ecole_Coranique.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("ec")
-                .HasAnnotation("ProductVersion", "6.0.3")
+                .HasAnnotation("ProductVersion", "6.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -917,6 +917,38 @@ namespace Ecole_Coranique.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Ecole_Coranique.Models.IdentificationEnseignant", b =>
+                {
+                    b.Property<int>("EnseignantId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IdentityUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("EnseignantId");
+
+                    b.HasIndex("IdentityUserId");
+
+                    b.ToTable("IdentificationEnseignants", "ec");
+                });
+
+            modelBuilder.Entity("Ecole_Coranique.Models.IdentificationEtudiant", b =>
+                {
+                    b.Property<int>("EtudiantId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IdentityUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("EtudiantId");
+
+                    b.HasIndex("IdentityUserId");
+
+                    b.ToTable("IdentificationEtudiants", "ec");
+                });
+
             modelBuilder.Entity("Ecole_Coranique.Models.Revision", b =>
                 {
                     b.Property<int>("Id")
@@ -1197,49 +1229,49 @@ namespace Ecole_Coranique.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "166591b3-6b26-4c7b-9ae0-9d77cd7dcef4",
+                            Id = "2a04d8a3-e257-437f-ac57-0c3e21d4a170",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b0251199-555e-4ab7-be74-8eb5c20de876",
+                            ConcurrencyStamp = "cb0d5a21-e777-4d96-aa95-66deda2b3b13",
                             Email = "admin@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EMAIL.COM",
                             NormalizedUserName = "ADMIN@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKX0DNW1r6Mw1T9dt8IPS0B9T56mBla228SQR8wVF4dTTC3KBXydTPtZXTk0LtM1CA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHvC3P3ZDoP+iijNsxuMIe8YJJCHJUS4WWQt9bpjhG7ywd4Aw9dM2bbh0oxXM0CBCw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b079c4ed-face-4fed-be83-2d5dd9e1efce",
+                            SecurityStamp = "d78d6735-ffd1-4cb5-83a0-2eeab577de40",
                             TwoFactorEnabled = false,
                             UserName = "admin@email.com"
                         },
                         new
                         {
-                            Id = "13443be5-483c-4428-bd83-62f41ae1020f",
+                            Id = "4241c993-9d51-4d18-a8a0-eb8aad3c0c74",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "164b4946-eee8-4e91-9879-b89d1aebb513",
+                            ConcurrencyStamp = "b580a9bf-a6c4-42f0-a815-e767c4fd6df1",
                             Email = "teacher@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEACHER@EMAIL.COM",
                             NormalizedUserName = "TEACHER@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEIgByJN2QFD2yj3QasTM8nIc71vDLY3blHRQqu9ghbXDYe4Sqp3z+lKZH7goL41Rw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECT1sA4tYyApdNf+gJEs2JGqkbas+6D68f8YTAlLPCxdt5J4ZaUGWXUUj2A/pWMuQw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5c6dc9b5-9488-43dc-b943-9b2f9c296f4f",
+                            SecurityStamp = "1285a9d5-db80-49e1-a7db-474bb6e21cfc",
                             TwoFactorEnabled = false,
                             UserName = "teacher@email.com"
                         },
                         new
                         {
-                            Id = "4aab8ad2-2f32-41a6-942d-f606b89cfc88",
+                            Id = "e160b8ab-1c5b-45bb-8b04-2a885209cad3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "07edb3bc-e438-48ad-995b-5fc6486b0097",
+                            ConcurrencyStamp = "e79cff7b-53f4-4582-948e-38ad546deeef",
                             Email = "student@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "STUDENT@EMAIL.COM",
                             NormalizedUserName = "STUDENT@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIaQjHp0lxvVFhlvSuroKqlyI2dZCRNRNB4OFkHtTD1vKkDi7vN66dITDsQvupYbOg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELRoRhtwFp1GOjctO/VN2FaAyB3oQx9ReHgrm8k6aqxqGACauVsjfyf3sIWru2eUfw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "85f0ac7f-6058-4e02-a76a-9f07e3a7ba64",
+                            SecurityStamp = "c41f515d-8d82-4261-9e33-2994cff3ce2f",
                             TwoFactorEnabled = false,
                             UserName = "student@email.com"
                         });
@@ -1275,21 +1307,21 @@ namespace Ecole_Coranique.Data.Migrations
                             Id = 1,
                             ClaimType = "Concern",
                             ClaimValue = "Admin",
-                            UserId = "166591b3-6b26-4c7b-9ae0-9d77cd7dcef4"
+                            UserId = "2a04d8a3-e257-437f-ac57-0c3e21d4a170"
                         },
                         new
                         {
                             Id = 2,
                             ClaimType = "Concern",
                             ClaimValue = "Teacher",
-                            UserId = "13443be5-483c-4428-bd83-62f41ae1020f"
+                            UserId = "4241c993-9d51-4d18-a8a0-eb8aad3c0c74"
                         },
                         new
                         {
                             Id = 3,
                             ClaimType = "Concern",
                             ClaimValue = "Student",
-                            UserId = "4aab8ad2-2f32-41a6-942d-f606b89cfc88"
+                            UserId = "e160b8ab-1c5b-45bb-8b04-2a885209cad3"
                         });
                 });
 
@@ -1386,6 +1418,44 @@ namespace Ecole_Coranique.Data.Migrations
                     b.Navigation("Enseignant");
                 });
 
+            modelBuilder.Entity("Ecole_Coranique.Models.IdentificationEnseignant", b =>
+                {
+                    b.HasOne("Ecole_Coranique.Models.Enseignant", "Enseignant")
+                        .WithOne("Identification")
+                        .HasForeignKey("Ecole_Coranique.Models.IdentificationEnseignant", "EnseignantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Enseignant");
+
+                    b.Navigation("IdentityUser");
+                });
+
+            modelBuilder.Entity("Ecole_Coranique.Models.IdentificationEtudiant", b =>
+                {
+                    b.HasOne("Ecole_Coranique.Models.Etudiant", "Etudiant")
+                        .WithOne("Identification")
+                        .HasForeignKey("Ecole_Coranique.Models.IdentificationEtudiant", "EtudiantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Etudiant");
+
+                    b.Navigation("IdentityUser");
+                });
+
             modelBuilder.Entity("Ecole_Coranique.Models.Revision", b =>
                 {
                     b.HasOne("Ecole_Coranique.Models.Etudiant", "Etudiant")
@@ -1467,6 +1537,8 @@ namespace Ecole_Coranique.Data.Migrations
             modelBuilder.Entity("Ecole_Coranique.Models.Enseignant", b =>
                 {
                     b.Navigation("EnseignantGroupes");
+
+                    b.Navigation("Identification");
                 });
 
             modelBuilder.Entity("Ecole_Coranique.Models.Etudiant", b =>
@@ -1474,6 +1546,8 @@ namespace Ecole_Coranique.Data.Migrations
                     b.Navigation("EtudiantAbsences");
 
                     b.Navigation("EtudiantRevisions");
+
+                    b.Navigation("Identification");
                 });
 
             modelBuilder.Entity("Ecole_Coranique.Models.Groupe", b =>
