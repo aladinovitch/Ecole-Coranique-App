@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Ecole_Coranique.Data;
 using Ecole_Coranique.Models;
+using static Ecole_Coranique.Helpers.Helpers;
 
 namespace Ecole_Coranique.Controllers
 {
@@ -15,19 +16,23 @@ namespace Ecole_Coranique.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public IdentificationEtudiantsController(ApplicationDbContext context) {
+        public IdentificationEtudiantsController(ApplicationDbContext context)
+        {
             _context = context;
         }
 
         // GET: IdentificationEtudiants
-        public async Task<IActionResult> Index() {
+        public async Task<IActionResult> Index()
+        {
             var applicationDbContext = _context.IdentificationEtudiants.Include(i => i.Etudiant).Include(i => i.IdentityUser);
             return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: IdentificationEtudiants/Details/5
-        public async Task<IActionResult> Details(int? id) {
-            if (id == null) {
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
                 return NotFound();
             }
 
@@ -35,7 +40,8 @@ namespace Ecole_Coranique.Controllers
                 .Include(i => i.Etudiant)
                 .Include(i => i.IdentityUser)
                 .FirstOrDefaultAsync(m => m.EtudiantId == id);
-            if (identificationEtudiant == null) {
+            if (identificationEtudiant == null)
+            {
                 return NotFound();
             }
 
@@ -43,14 +49,10 @@ namespace Ecole_Coranique.Controllers
         }
 
         // GET: IdentificationEtudiants/Create
-        public IActionResult Create() {
-            //ViewData["EtudiantId"] = new SelectList(_context.Etudiants, "Id", "Fullname");
-            //ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "UserName");
-
-            var etudiantsNotAlreadyTaken = _context.Etudiants.Where(x => !_context.IdentificationEtudiants.Select(x => x.EtudiantId).Contains(x.Id));
-            ViewData["EtudiantId"] = new SelectList(etudiantsNotAlreadyTaken, "Id", "Fullname");
-            var identityUsersNotAlreadyTaken = _context.Users.Where(x => !_context.IdentificationEtudiants.Select(x => x.IdentityUserId).Contains(x.Id));
-            ViewData["IdentityUserId"] = new SelectList(identityUsersNotAlreadyTaken, "Id", "UserName");
+        public IActionResult Create()
+        {
+            ViewData["EtudiantId"] = new SelectList(EtudiantsNotAlreadyListed(_context), "Id", "Fullname");
+            ViewData["IdentityUserId"] = new SelectList(IdentityUsersNotAlreadyListed(_context), "Id", "UserName");
             return View();
         }
 
@@ -59,8 +61,10 @@ namespace Ecole_Coranique.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EtudiantId,IdentityUserId")] IdentificationEtudiant identificationEtudiant) {
-            if (ModelState.IsValid) {
+        public async Task<IActionResult> Create([Bind("EtudiantId,IdentityUserId")] IdentificationEtudiant identificationEtudiant)
+        {
+            if (ModelState.IsValid)
+            {
                 _context.Add(identificationEtudiant);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -71,13 +75,16 @@ namespace Ecole_Coranique.Controllers
         }
 
         // GET: IdentificationEtudiants/Edit/5
-        public async Task<IActionResult> Edit(int? id) {
-            if (id == null) {
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
                 return NotFound();
             }
 
             var identificationEtudiant = await _context.IdentificationEtudiants.FindAsync(id);
-            if (identificationEtudiant == null) {
+            if (identificationEtudiant == null)
+            {
                 return NotFound();
             }
             ViewData["EtudiantId"] = new SelectList(_context.Etudiants, "Id", "Fullname", identificationEtudiant.EtudiantId);
@@ -90,19 +97,28 @@ namespace Ecole_Coranique.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EtudiantId,IdentityUserId")] IdentificationEtudiant identificationEtudiant) {
-            if (id != identificationEtudiant.EtudiantId) {
+        public async Task<IActionResult> Edit(int id, [Bind("EtudiantId,IdentityUserId")] IdentificationEtudiant identificationEtudiant)
+        {
+            if (id != identificationEtudiant.EtudiantId)
+            {
                 return NotFound();
             }
 
-            if (ModelState.IsValid) {
-                try {
+            if (ModelState.IsValid)
+            {
+                try
+                {
                     _context.Update(identificationEtudiant);
                     await _context.SaveChangesAsync();
-                } catch (DbUpdateConcurrencyException) {
-                    if (!IdentificationEtudiantExists(identificationEtudiant.EtudiantId)) {
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!IdentificationEtudiantExists(identificationEtudiant.EtudiantId))
+                    {
                         return NotFound();
-                    } else {
+                    }
+                    else
+                    {
                         throw;
                     }
                 }
@@ -114,8 +130,10 @@ namespace Ecole_Coranique.Controllers
         }
 
         // GET: IdentificationEtudiants/Delete/5
-        public async Task<IActionResult> Delete(int? id) {
-            if (id == null) {
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
                 return NotFound();
             }
 
@@ -123,7 +141,8 @@ namespace Ecole_Coranique.Controllers
                 .Include(i => i.Etudiant)
                 .Include(i => i.IdentityUser)
                 .FirstOrDefaultAsync(m => m.EtudiantId == id);
-            if (identificationEtudiant == null) {
+            if (identificationEtudiant == null)
+            {
                 return NotFound();
             }
 
@@ -133,14 +152,16 @@ namespace Ecole_Coranique.Controllers
         // POST: IdentificationEtudiants/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id) {
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
             var identificationEtudiant = await _context.IdentificationEtudiants.FindAsync(id);
             _context.IdentificationEtudiants.Remove(identificationEtudiant);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool IdentificationEtudiantExists(int id) {
+        private bool IdentificationEtudiantExists(int id)
+        {
             return _context.IdentificationEtudiants.Any(e => e.EtudiantId == id);
         }
     }

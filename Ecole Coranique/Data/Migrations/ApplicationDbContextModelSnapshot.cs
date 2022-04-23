@@ -1229,49 +1229,49 @@ namespace Ecole_Coranique.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2a04d8a3-e257-437f-ac57-0c3e21d4a170",
+                            Id = "4f891607-8801-4c6f-8d3d-c17723a8056e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cb0d5a21-e777-4d96-aa95-66deda2b3b13",
+                            ConcurrencyStamp = "998667d2-ba92-4276-abbd-44f963a3e17b",
                             Email = "admin@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EMAIL.COM",
                             NormalizedUserName = "ADMIN@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHvC3P3ZDoP+iijNsxuMIe8YJJCHJUS4WWQt9bpjhG7ywd4Aw9dM2bbh0oxXM0CBCw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELEovmmNmnxtx7vdCo3Ac4wGg5fhgazMuihOpMkNJvSTJFvhvCdVraqDlBHihPEMwQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d78d6735-ffd1-4cb5-83a0-2eeab577de40",
+                            SecurityStamp = "437b8771-400a-40a6-8237-886b05f1ec63",
                             TwoFactorEnabled = false,
                             UserName = "admin@email.com"
                         },
                         new
                         {
-                            Id = "4241c993-9d51-4d18-a8a0-eb8aad3c0c74",
+                            Id = "00177a50-b7ce-45cc-b3a5-80832e10ddc2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b580a9bf-a6c4-42f0-a815-e767c4fd6df1",
+                            ConcurrencyStamp = "0f761900-25dd-4f96-a93e-06432b3b3076",
                             Email = "teacher@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEACHER@EMAIL.COM",
                             NormalizedUserName = "TEACHER@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECT1sA4tYyApdNf+gJEs2JGqkbas+6D68f8YTAlLPCxdt5J4ZaUGWXUUj2A/pWMuQw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJWNjSNzPWaNATq7ewn5LHfp8nI1Na1SgzODgEkwWwL3bW027dMt170Pxgn9ZD3PTw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1285a9d5-db80-49e1-a7db-474bb6e21cfc",
+                            SecurityStamp = "b5ffd3e8-347c-4c85-8137-c74ab88bb0cf",
                             TwoFactorEnabled = false,
                             UserName = "teacher@email.com"
                         },
                         new
                         {
-                            Id = "e160b8ab-1c5b-45bb-8b04-2a885209cad3",
+                            Id = "40d3f99e-0345-4f90-904d-1b423434e791",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e79cff7b-53f4-4582-948e-38ad546deeef",
+                            ConcurrencyStamp = "1a54f0eb-17d3-4d71-8e4f-ff9c5527cf88",
                             Email = "student@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "STUDENT@EMAIL.COM",
                             NormalizedUserName = "STUDENT@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELRoRhtwFp1GOjctO/VN2FaAyB3oQx9ReHgrm8k6aqxqGACauVsjfyf3sIWru2eUfw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPKGinAyD6eG2U/W158T4iwnHCMTZq2PKdNw3lpFmLzxMNonW8jPPDkufxtb2mki4g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c41f515d-8d82-4261-9e33-2994cff3ce2f",
+                            SecurityStamp = "aee0907a-a18c-427e-a27c-f156536c8e45",
                             TwoFactorEnabled = false,
                             UserName = "student@email.com"
                         });
@@ -1307,21 +1307,21 @@ namespace Ecole_Coranique.Data.Migrations
                             Id = 1,
                             ClaimType = "Concern",
                             ClaimValue = "Admin",
-                            UserId = "2a04d8a3-e257-437f-ac57-0c3e21d4a170"
+                            UserId = "4f891607-8801-4c6f-8d3d-c17723a8056e"
                         },
                         new
                         {
                             Id = 2,
                             ClaimType = "Concern",
                             ClaimValue = "Teacher",
-                            UserId = "4241c993-9d51-4d18-a8a0-eb8aad3c0c74"
+                            UserId = "00177a50-b7ce-45cc-b3a5-80832e10ddc2"
                         },
                         new
                         {
                             Id = 3,
                             ClaimType = "Concern",
                             ClaimValue = "Student",
-                            UserId = "e160b8ab-1c5b-45bb-8b04-2a885209cad3"
+                            UserId = "40d3f99e-0345-4f90-904d-1b423434e791"
                         });
                 });
 

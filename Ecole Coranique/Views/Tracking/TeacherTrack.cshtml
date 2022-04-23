@@ -1,0 +1,85 @@
+﻿@model Ecole_Coranique.Models.Enseignant
+
+@{
+	ViewData["Title"] = "أنشطة المدرس";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>أنشطة المدرس</h1>
+
+<div>
+	<h4>المدرس</h4>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Prenom)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Prenom)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Nom)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Nom)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Phone)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Phone)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Email)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Email)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Adresse)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Adresse)
+		</dd>
+	</dl>
+	<hr />
+	<div class="alert alert-dismissible alert-info">
+		<h4 class="alert-heading">المجموعات</h4>
+	</div>
+	@foreach (var group in Model.EnseignantGroupes) {
+		<dl class="row">
+			<dt class="col-sm-2">الرقم</dt>
+			<dd class="col-sm-10">@group.Numero</dd>
+			<dt class="col-sm-2">الإسم</dt>
+			<dd class="col-sm-10">@group.Nom</dd>
+		</dl>
+		<div class="alert alert-dismissible alert-success">
+			<h4 class="alert-heading">طلبة المجموعة <span class="text-info">@group.Nom</span> رقم <span class="text-info">@group.Numero</span></h4>
+		</div>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">الإسم</th>
+					<th scope="col">اللقب</th>
+					<th scope="col">تاريخ الميلاد</th>
+					<th scope="col">الهاتف</th>
+					<th scope="col">البريد الإلكتروني</th>
+					<th scope="col">العنوان</th>
+				</tr>
+			</thead>
+			@foreach (var etudiant in group.GroupeEtudiants) {
+				<tbody>
+					<tr>
+						<td>@etudiant.Nom</td>
+						<td>@etudiant.Prenom</td>
+						<td>@etudiant.Naissance.ToString("yyyy-MM-dd")</td>
+						<td>@etudiant.Phone</td>
+						<td>@etudiant.Email</td>
+						<td>@etudiant.Adresse</td>
+					</tr>
+				</tbody>
+			}
+		</table>
+		<hr />
+	}
+</div>

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Security.Claims;
+using static Ecole_Coranique.Helpers.Helpers;
 
 namespace Ecole_Coranique.Controllers
 {
@@ -20,18 +21,21 @@ namespace Ecole_Coranique.Controllers
         }
 
         public async Task<IActionResult> IndexAsync() {
-            //var idCurrentUser = _context.Users.Where(x => !_context.IdentificationEtudiants.Select(x => x.IdentityUserId).Contains(x.Id));
-            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             var authService = HttpContext.RequestServices.GetRequiredService<IAuthorizationService>();
             if ((await authService.AuthorizeAsync(User, AppPolicyName.Administration)).Succeeded) {
                 return View();
             } else if ((await authService.AuthorizeAsync(User, AppPolicyName.TeacherTrack)).Succeeded) {
+                var id = CurrentTeacherId(_context, User);
+                if (id == 0) {
+                    return NotFound();
+                }
                 return RedirectToAction("TeacherTrack", "Tracking", new { Id = 1 });
             } else if ((await authService.AuthorizeAsync(User, AppPolicyName.StudentTrack)).Succeeded) {
-                var idCurrentStudent = await _context.IdentificationEtudiants
-                .Where(x => x.IdentityUserId.Equals(currentUserId)).Select(x => x.EtudiantId).FirstOrDefaultAsync();
-                return RedirectToAction("StudentTrack", "Tracking", new { Id = idCurrentStudent });
+                var id = CurrentStudentId(_context, User);
+                if (id == 0) {
+                    return NotFound();
+                }
+                return RedirectToAction("StudentTrack", "Tracking", new { Id = id });
             }
             return View();
         }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Ecole_Coranique.Data;
 using Ecole_Coranique.Models;
+using static Ecole_Coranique.Helpers.Helpers;
 
 namespace Ecole_Coranique.Controllers
 {
@@ -50,13 +51,8 @@ namespace Ecole_Coranique.Controllers
         // GET: IdentificationEnseignants/Create
         public IActionResult Create()
         {
-            //ViewData["EnseignantId"] = new SelectList(_context.Enseignants, "Id", "Fullname");
-            //ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "UserName");
-
-            var enseignantsNotAlreadyTaken = _context.Enseignants.Where(x => !_context.IdentificationEnseignants.Select(x => x.EnseignantId).Contains(x.Id));
-            ViewData["EnseignantId"] = new SelectList(enseignantsNotAlreadyTaken, "Id", "Fullname");
-            var identityUsersNotAlreadyTaken = _context.Users.Where(x => !_context.IdentificationEnseignants.Select(x => x.IdentityUserId).Contains(x.Id));
-            ViewData["IdentityUserId"] = new SelectList(identityUsersNotAlreadyTaken, "Id", "UserName");
+            ViewData["EnseignantId"] = new SelectList(EnseignantsNotAlreadyListed(_context), "Id", "Fullname");
+            ViewData["IdentityUserId"] = new SelectList(IdentityUsersNotAlreadyListed(_context), "Id", "UserName");
             return View();
         }
 

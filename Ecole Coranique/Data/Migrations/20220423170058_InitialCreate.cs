@@ -267,9 +267,9 @@ namespace Ecole_Coranique.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "2a04d8a3-e257-437f-ac57-0c3e21d4a170", 0, "cb0d5a21-e777-4d96-aa95-66deda2b3b13", "admin@email.com", true, false, null, "ADMIN@EMAIL.COM", "ADMIN@EMAIL.COM", "AQAAAAEAACcQAAAAEHvC3P3ZDoP+iijNsxuMIe8YJJCHJUS4WWQt9bpjhG7ywd4Aw9dM2bbh0oxXM0CBCw==", null, false, "d78d6735-ffd1-4cb5-83a0-2eeab577de40", false, "admin@email.com" },
-                    { "4241c993-9d51-4d18-a8a0-eb8aad3c0c74", 0, "b580a9bf-a6c4-42f0-a815-e767c4fd6df1", "teacher@email.com", true, false, null, "TEACHER@EMAIL.COM", "TEACHER@EMAIL.COM", "AQAAAAEAACcQAAAAECT1sA4tYyApdNf+gJEs2JGqkbas+6D68f8YTAlLPCxdt5J4ZaUGWXUUj2A/pWMuQw==", null, false, "1285a9d5-db80-49e1-a7db-474bb6e21cfc", false, "teacher@email.com" },
-                    { "e160b8ab-1c5b-45bb-8b04-2a885209cad3", 0, "e79cff7b-53f4-4582-948e-38ad546deeef", "student@email.com", true, false, null, "STUDENT@EMAIL.COM", "STUDENT@EMAIL.COM", "AQAAAAEAACcQAAAAELRoRhtwFp1GOjctO/VN2FaAyB3oQx9ReHgrm8k6aqxqGACauVsjfyf3sIWru2eUfw==", null, false, "c41f515d-8d82-4261-9e33-2994cff3ce2f", false, "student@email.com" }
+                    { "00177a50-b7ce-45cc-b3a5-80832e10ddc2", 0, "0f761900-25dd-4f96-a93e-06432b3b3076", "teacher@email.com", true, false, null, "TEACHER@EMAIL.COM", "TEACHER@EMAIL.COM", "AQAAAAEAACcQAAAAEJWNjSNzPWaNATq7ewn5LHfp8nI1Na1SgzODgEkwWwL3bW027dMt170Pxgn9ZD3PTw==", null, false, "b5ffd3e8-347c-4c85-8137-c74ab88bb0cf", false, "teacher@email.com" },
+                    { "40d3f99e-0345-4f90-904d-1b423434e791", 0, "1a54f0eb-17d3-4d71-8e4f-ff9c5527cf88", "student@email.com", true, false, null, "STUDENT@EMAIL.COM", "STUDENT@EMAIL.COM", "AQAAAAEAACcQAAAAEPKGinAyD6eG2U/W158T4iwnHCMTZq2PKdNw3lpFmLzxMNonW8jPPDkufxtb2mki4g==", null, false, "aee0907a-a18c-427e-a27c-f156536c8e45", false, "student@email.com" },
+                    { "4f891607-8801-4c6f-8d3d-c17723a8056e", 0, "998667d2-ba92-4276-abbd-44f963a3e17b", "admin@email.com", true, false, null, "ADMIN@EMAIL.COM", "ADMIN@EMAIL.COM", "AQAAAAEAACcQAAAAELEovmmNmnxtx7vdCo3Ac4wGg5fhgazMuihOpMkNJvSTJFvhvCdVraqDlBHihPEMwQ==", null, false, "437b8771-400a-40a6-8237-886b05f1ec63", false, "admin@email.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -382,9 +382,9 @@ namespace Ecole_Coranique.Data.Migrations
                 columns: new[] { "Id", "ClaimType", "ClaimValue", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Concern", "Admin", "2a04d8a3-e257-437f-ac57-0c3e21d4a170" },
-                    { 2, "Concern", "Teacher", "4241c993-9d51-4d18-a8a0-eb8aad3c0c74" },
-                    { 3, "Concern", "Student", "e160b8ab-1c5b-45bb-8b04-2a885209cad3" }
+                    { 1, "Concern", "Admin", "4f891607-8801-4c6f-8d3d-c17723a8056e" },
+                    { 2, "Concern", "Teacher", "00177a50-b7ce-45cc-b3a5-80832e10ddc2" },
+                    { 3, "Concern", "Student", "40d3f99e-0345-4f90-904d-1b423434e791" }
                 });
 
             migrationBuilder.InsertData(
@@ -570,19 +570,19 @@ namespace Ecole_Coranique.Data.Migrations
                 schema: "ec",
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "2a04d8a3-e257-437f-ac57-0c3e21d4a170");
+                keyValue: "00177a50-b7ce-45cc-b3a5-80832e10ddc2");
 
             migrationBuilder.DeleteData(
                 schema: "ec",
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "4241c993-9d51-4d18-a8a0-eb8aad3c0c74");
+                keyValue: "40d3f99e-0345-4f90-904d-1b423434e791");
 
             migrationBuilder.DeleteData(
                 schema: "ec",
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "e160b8ab-1c5b-45bb-8b04-2a885209cad3");
+                keyValue: "4f891607-8801-4c6f-8d3d-c17723a8056e");
 
             migrationBuilder.RenameTable(
                 name: "AspNetUserTokens",

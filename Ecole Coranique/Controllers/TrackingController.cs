@@ -12,11 +12,9 @@ namespace Ecole_Coranique.Controllers
             _context = context;
         }
         public async Task<IActionResult> StudentTrack(int? id) {
-
             if (id == null) {
                 return NotFound();
             }
-
             var etudiant = await _context.Etudiants
                 .Include(e => e.Groupe)
                 .Include(e => e.EtudiantAbsences)
@@ -28,8 +26,20 @@ namespace Ecole_Coranique.Controllers
             if (etudiant == null) {
                 return NotFound();
             }
-
             return View(etudiant);
+        }
+        public async Task<IActionResult> TeacherTrack(int? id) {
+            if (id == null) {
+                return NotFound();
+            }
+            var enseignant = await _context.Enseignants
+                .Include(x => x.EnseignantGroupes)
+                .ThenInclude(x => x.GroupeEtudiants)
+                .FirstOrDefaultAsync(x => x.Id == id);
+            if (enseignant == null) {
+                return NotFound();
+            }
+            return View(enseignant);
         }
     }
 }
