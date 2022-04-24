@@ -2,11 +2,21 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using static Ecole_Coranique.Helpers.Helpers;
 
 namespace Ecole_Coranique.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+        static string ADMIN_ID = Guid.NewGuid().ToString();
+        static string TEACHER_ONE_ID = Guid.NewGuid().ToString();
+        static string TEACHER_TWO_ID = Guid.NewGuid().ToString();
+        static string TEACHER_THREE_ID = Guid.NewGuid().ToString();
+        static string STUDENT_ONE_ID = Guid.NewGuid().ToString();
+        static string STUDENT_TWO_ID = Guid.NewGuid().ToString();
+        static string STUDENT_THREE_ID = Guid.NewGuid().ToString();
+        static string STUDENT_FOUR_ID = Guid.NewGuid().ToString();
+        static string STUDENT_FIVE_ID = Guid.NewGuid().ToString();
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) {
         }
@@ -38,32 +48,30 @@ namespace Ecole_Coranique.Data
             SeedUsers(modelBuilder);
             SeedData(modelBuilder);
         }
-        private static IdentityUser InitializeIdentityUser(string userId, string username, string password) {
-            var identityUser = new IdentityUser {
-                Id = userId, // Primary key
-                Email = username,
-                NormalizedEmail = username.ToUpper(),
-                UserName = username,
-                NormalizedUserName = username.ToUpper(),
-                EmailConfirmed = true,
-            };
-            identityUser.PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(identityUser, password);
-            return identityUser;
-        }
+        
         private static void SeedUsers(ModelBuilder modelBuilder) {
-            string ADMIN_ID = Guid.NewGuid().ToString();
-            string TEACHER_ID = Guid.NewGuid().ToString();
-            string STUDENT_ID = Guid.NewGuid().ToString();
             string password = "Pass_12345";
-            var admin = InitializeIdentityUser(ADMIN_ID, "admin@email.com", password);
-            var teacher = InitializeIdentityUser(TEACHER_ID, "teacher@email.com", password);
-            var student = InitializeIdentityUser(STUDENT_ID, "student@email.com", password);
             // Seeding the User to AspNetUsers table
-            modelBuilder.Entity<IdentityUser>().HasData(admin, teacher, student);
+            modelBuilder.Entity<IdentityUser>().HasData(
+                InitializeIdentityUser(ADMIN_ID, "admin@email.com", password),
+                InitializeIdentityUser(TEACHER_ONE_ID, "enseignat.premier@email.com", password),
+                InitializeIdentityUser(TEACHER_TWO_ID, "enseignat.second@email.com", password),
+                InitializeIdentityUser(TEACHER_THREE_ID, "enseignat.troisieme@email.com", password),
+                InitializeIdentityUser(STUDENT_ONE_ID, "etudiant.premier@email.com", password),
+                InitializeIdentityUser(STUDENT_TWO_ID, "etudiant.second@email.com", password),
+                InitializeIdentityUser(STUDENT_THREE_ID, "etudiant.troisieme@email.com", password),
+                InitializeIdentityUser(STUDENT_FOUR_ID, "etudiant.quatrieme@email.com", password),
+                InitializeIdentityUser(STUDENT_FIVE_ID, "etudiant.cinquieme@email.com", password));
             modelBuilder.Entity<IdentityUserClaim<string>>().HasData(
                new IdentityUserClaim<string> { Id = 1, UserId = ADMIN_ID, ClaimType = AppClaimType.Concern, ClaimValue = AppClaimValue.Admin },
-               new IdentityUserClaim<string> { Id = 2, UserId = TEACHER_ID, ClaimType = AppClaimType.Concern, ClaimValue = AppClaimValue.Teacher },
-               new IdentityUserClaim<string> { Id = 3, UserId = STUDENT_ID, ClaimType = AppClaimType.Concern, ClaimValue = AppClaimValue.Student });
+               new IdentityUserClaim<string> { Id = 2, UserId = TEACHER_ONE_ID, ClaimType = AppClaimType.Concern, ClaimValue = AppClaimValue.Teacher },
+               new IdentityUserClaim<string> { Id = 3, UserId = TEACHER_TWO_ID, ClaimType = AppClaimType.Concern, ClaimValue = AppClaimValue.Teacher },
+               new IdentityUserClaim<string> { Id = 4, UserId = TEACHER_THREE_ID, ClaimType = AppClaimType.Concern, ClaimValue = AppClaimValue.Teacher },
+               new IdentityUserClaim<string> { Id = 5, UserId = STUDENT_ONE_ID, ClaimType = AppClaimType.Concern, ClaimValue = AppClaimValue.Student },
+               new IdentityUserClaim<string> { Id = 6, UserId = STUDENT_TWO_ID, ClaimType = AppClaimType.Concern, ClaimValue = AppClaimValue.Student },
+               new IdentityUserClaim<string> { Id = 7, UserId = STUDENT_THREE_ID, ClaimType = AppClaimType.Concern, ClaimValue = AppClaimValue.Student },
+               new IdentityUserClaim<string> { Id = 8, UserId = STUDENT_FOUR_ID, ClaimType = AppClaimType.Concern, ClaimValue = AppClaimValue.Student },
+               new IdentityUserClaim<string> { Id = 9, UserId = STUDENT_FIVE_ID, ClaimType = AppClaimType.Concern, ClaimValue = AppClaimValue.Student });
         }
         private static void SeedData(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Enseignant>().HasData(
@@ -74,8 +82,9 @@ namespace Ecole_Coranique.Data
 
             modelBuilder.Entity<Groupe>().HasData(
                 new Groupe { Id = 1, Numero = 1, Nom = "مجموعة البنات", EnseignantId = 3 },
-                new Groupe { Id = 2, Numero = 2, Nom = "مجموعة الصباح", EnseignantId = 4 },
-                new Groupe { Id = 3, Numero = 3, Nom = "مجموعة المساء", EnseignantId = 1 });
+                new Groupe { Id = 2, Numero = 2, Nom = "مجموعة الصباح", EnseignantId = 2 },
+                new Groupe { Id = 3, Numero = 3, Nom = "مجموعة المساء", EnseignantId = 1 },
+                new Groupe { Id = 4, Numero = 4, Nom = "مجموعة نهاية الأسبوع", EnseignantId = 1 });
 
             modelBuilder.Entity<Etudiant>().HasData(
                 new Etudiant { Id = 1, Prenom = "أحمد", Nom = "بوحمد", Naissance = DateTime.Parse("2001-12-11"), Phone = "05 01 01 01", Email = "ahmed.mido@gmail.com", Adresse = "حي تاكبو، المدية", GroupeId = 3 },
@@ -84,7 +93,15 @@ namespace Ecole_Coranique.Data
                 new Etudiant { Id = 4, Prenom = "سفيان", Nom = "سيدو", Naissance = DateTime.Parse("1990-02-03"), Phone = "05 04 04 04", Email = "so.sidou33@bmail.com", Adresse = "مدينة الصخور، الرغاية", GroupeId = 2 },
                 new Etudiant { Id = 5, Prenom = "سميحة", Nom = "سليمة", Naissance = DateTime.Parse("1998-12-12"), Phone = "05 05 05 05", Email = "samimi@gmail.com", Adresse = "حي بولوغين، الجزائر العاصمة", GroupeId = 1 },
                 new Etudiant { Id = 6, Prenom = "فاطمة", Nom = "بوفطوم", Naissance = DateTime.Parse("2005-02-01"), Phone = "05 06 06 06", Email = "fati.bb@gmail.com", Adresse = "حي خمسة منازل، الجزائر العاصمة", GroupeId = 1 },
-                new Etudiant { Id = 7, Prenom = "سميرة", Nom = "بو سمار", Naissance = DateTime.Parse("1999-01-13"), Phone = "05 07 07 07", Email = "bousemar.sam@gmail.com", Adresse = "طريق الأكاسيا، المدية", GroupeId = 1 });
+                new Etudiant { Id = 7, Prenom = "سميرة", Nom = "بوسمار", Naissance = DateTime.Parse("1999-01-13"), Phone = "05 07 07 07", Email = "bousemar.sam@gmail.com", Adresse = "طريق الأكاسيا، المدية", GroupeId = 1 },
+                new Etudiant { Id = 8, Prenom = "عمر", Nom = "معمر", Naissance = DateTime.Parse("1996-01-01"), Phone = "05 08 08 08", Email = "ameur.am@gmail.com", Adresse = "حي الأكاديمي، المدية", GroupeId = 4 },
+                new Etudiant { Id = 9, Prenom = "أنيسة", Nom = "ليونس", Naissance = DateTime.Parse("1994-03-05"), Phone = "05 09 09 09", Email = "anissa.nissou@gmail.com", Adresse = "شارع الورود، البليدة", GroupeId = 1 },
+                new Etudiant { Id = 10, Prenom = "حميدة", Nom = "حمدي", Naissance = DateTime.Parse("1992-10-13"), Phone = "05 10 10 10", Email = "hamdi.h@gmail.com", Adresse = "حي الأربع طرق، تيبازة", GroupeId = 1 },
+                new Etudiant { Id = 11, Prenom = "محمود", Nom = "بوحمد ", Naissance = DateTime.Parse("1978-09-04"), Phone = "05 11 11 11", Email = "bou7.hmidah@gmail.com", Adresse = "حي تاكبو، المدية", GroupeId = 4 },
+                new Etudiant { Id = 12, Prenom = "أنيس", Nom = "ليونس ", Naissance = DateTime.Parse("1997-07-07"), Phone = "05 12 12 12", Email = "lounis.anis@gmail.com", Adresse = "حي تاكبو، المدية", GroupeId = 2 },
+                new Etudiant { Id = 13, Prenom = "رشيد", Nom = "بوراشدي", Naissance = DateTime.Parse("2003-05-03"), Phone = "05 13 13 13", Email = "elrachid03@gmail.com", Adresse = "حى باب القواس، المدية", GroupeId = 4 },
+                new Etudiant { Id = 14, Prenom = "زكريا", Nom = "حميمي", Naissance = DateTime.Parse("2005-02-15"), Phone = "05 14 14 14", Email = "zaki7mimi@gmail.com", Adresse = "طريق الأكاسيا، المدية", GroupeId = 4 },
+                new Etudiant { Id = 15, Prenom = "نصرالدين", Nom = "بن ناصر", Naissance = DateTime.Parse("1993-01-03"), Phone = "05 15 15 15", Email = "nassirou93@gmail.com", Adresse = "حى باب القواس، المدية", GroupeId = 2 });
 
             modelBuilder.Entity<Absence>().HasData(
                 new Absence { Id = 1, Date = DateTime.Parse("2022-01-01"), Observation = "مشغول", EtudiantId = 1 },
@@ -186,18 +203,42 @@ namespace Ecole_Coranique.Data
                 new Revision { Id = 2, Date = DateTime.Parse("2022-01-10"), EtudiantId = 2, HizbId = 1, HuitiemeId = 1 },
                 new Revision { Id = 3, Date = DateTime.Parse("2022-01-10"), EtudiantId = 3, HizbId = 1, HuitiemeId = 1 },
                 new Revision { Id = 4, Date = DateTime.Parse("2022-01-10"), EtudiantId = 4, HizbId = 1, HuitiemeId = 1 },
-                new Revision { Id = 5, Date = DateTime.Parse("2022-01-15"), EtudiantId = 1, HizbId = 1, HuitiemeId = 1 },
-                new Revision { Id = 6, Date = DateTime.Parse("2022-01-15"), EtudiantId = 2, HizbId = 1, HuitiemeId = 1 },
-                new Revision { Id = 7, Date = DateTime.Parse("2022-01-15"), EtudiantId = 3, HizbId = 1, HuitiemeId = 2 },
-                new Revision { Id = 8, Date = DateTime.Parse("2022-01-15"), EtudiantId = 4, HizbId = 1, HuitiemeId = 2 },
-                new Revision { Id = 9, Date = DateTime.Parse("2022-01-20"), EtudiantId = 1, HizbId = 1, HuitiemeId = 2 },
-                new Revision { Id = 10, Date = DateTime.Parse("2022-01-20"), EtudiantId = 2, HizbId = 1, HuitiemeId = 2 },
-                new Revision { Id = 11, Date = DateTime.Parse("2022-01-20"), EtudiantId = 3, HizbId = 1, HuitiemeId = 3 },
-                new Revision { Id = 12, Date = DateTime.Parse("2022-01-20"), EtudiantId = 4, HizbId = 1, HuitiemeId = 3 },
-                new Revision { Id = 13, Date = DateTime.Parse("2022-01-21"), EtudiantId = 1, HizbId = 1, HuitiemeId = 2 },
-                new Revision { Id = 14, Date = DateTime.Parse("2022-01-21"), EtudiantId = 2, HizbId = 1, HuitiemeId = 4 },
-                new Revision { Id = 15, Date = DateTime.Parse("2022-01-21"), EtudiantId = 3, HizbId = 1, HuitiemeId = 3 },
-                new Revision { Id = 16, Date = DateTime.Parse("2022-01-21"), EtudiantId = 4, HizbId = 1, HuitiemeId = 4 });
+                new Revision { Id = 5, Date = DateTime.Parse("2022-01-10"), EtudiantId = 5, HizbId = 1, HuitiemeId = 1 },
+                new Revision { Id = 6, Date = DateTime.Parse("2022-01-10"), EtudiantId = 6, HizbId = 1, HuitiemeId = 1 },
+                new Revision { Id = 7, Date = DateTime.Parse("2022-01-10"), EtudiantId = 7, HizbId = 1, HuitiemeId = 1 },
+                new Revision { Id = 8, Date = DateTime.Parse("2022-01-15"), EtudiantId = 1, HizbId = 1, HuitiemeId = 1 },
+                new Revision { Id = 9, Date = DateTime.Parse("2022-01-15"), EtudiantId = 2, HizbId = 1, HuitiemeId = 1 },
+                new Revision { Id = 10, Date = DateTime.Parse("2022-01-15"), EtudiantId = 3, HizbId = 1, HuitiemeId = 2 },
+                new Revision { Id = 11, Date = DateTime.Parse("2022-01-15"), EtudiantId = 4, HizbId = 1, HuitiemeId = 2 },
+                new Revision { Id = 12, Date = DateTime.Parse("2022-01-15"), EtudiantId = 5, HizbId = 1, HuitiemeId = 2 },
+                new Revision { Id = 13, Date = DateTime.Parse("2022-01-15"), EtudiantId = 6, HizbId = 1, HuitiemeId = 2 },
+                new Revision { Id = 14, Date = DateTime.Parse("2022-01-15"), EtudiantId = 7, HizbId = 1, HuitiemeId = 3 },
+                new Revision { Id = 15, Date = DateTime.Parse("2022-01-20"), EtudiantId = 1, HizbId = 1, HuitiemeId = 2 },
+                new Revision { Id = 16, Date = DateTime.Parse("2022-01-20"), EtudiantId = 2, HizbId = 1, HuitiemeId = 2 },
+                new Revision { Id = 17, Date = DateTime.Parse("2022-01-20"), EtudiantId = 3, HizbId = 1, HuitiemeId = 3 },
+                new Revision { Id = 18, Date = DateTime.Parse("2022-01-20"), EtudiantId = 4, HizbId = 1, HuitiemeId = 3 },
+                new Revision { Id = 19, Date = DateTime.Parse("2022-01-20"), EtudiantId = 5, HizbId = 1, HuitiemeId = 3 },
+                new Revision { Id = 20, Date = DateTime.Parse("2022-01-20"), EtudiantId = 6, HizbId = 1, HuitiemeId = 4 },
+                new Revision { Id = 21, Date = DateTime.Parse("2022-01-20"), EtudiantId = 7, HizbId = 1, HuitiemeId = 4 },
+                new Revision { Id = 22, Date = DateTime.Parse("2022-01-21"), EtudiantId = 1, HizbId = 1, HuitiemeId = 2 },
+                new Revision { Id = 23, Date = DateTime.Parse("2022-01-21"), EtudiantId = 2, HizbId = 1, HuitiemeId = 4 },
+                new Revision { Id = 24, Date = DateTime.Parse("2022-01-21"), EtudiantId = 3, HizbId = 1, HuitiemeId = 3 },
+                new Revision { Id = 25, Date = DateTime.Parse("2022-01-21"), EtudiantId = 4, HizbId = 1, HuitiemeId = 5 },
+                new Revision { Id = 26, Date = DateTime.Parse("2022-01-21"), EtudiantId = 5, HizbId = 1, HuitiemeId = 4 },
+                new Revision { Id = 27, Date = DateTime.Parse("2022-01-21"), EtudiantId = 6, HizbId = 1, HuitiemeId = 6 },
+                new Revision { Id = 28, Date = DateTime.Parse("2022-01-21"), EtudiantId = 7, HizbId = 1, HuitiemeId = 5 });
+
+            modelBuilder.Entity<IdentificationEnseignant>().HasData(
+                new IdentificationEnseignant { EnseignantId = 1, IdentityUserId = TEACHER_ONE_ID },
+                new IdentificationEnseignant { EnseignantId = 2, IdentityUserId = TEACHER_TWO_ID },
+                new IdentificationEnseignant { EnseignantId = 3, IdentityUserId = TEACHER_THREE_ID });
+
+            modelBuilder.Entity<IdentificationEtudiant>().HasData(
+                new IdentificationEtudiant { EtudiantId = 1, IdentityUserId = STUDENT_ONE_ID },
+                new IdentificationEtudiant { EtudiantId = 3, IdentityUserId = STUDENT_TWO_ID },
+                new IdentificationEtudiant { EtudiantId = 5, IdentityUserId = STUDENT_THREE_ID },
+                new IdentificationEtudiant { EtudiantId = 7, IdentityUserId = STUDENT_FOUR_ID },
+                new IdentificationEtudiant { EtudiantId = 9, IdentityUserId = STUDENT_FIVE_ID });
         }
     }
 }

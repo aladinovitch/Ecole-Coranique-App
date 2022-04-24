@@ -43,18 +43,9 @@
 		</dd>
 	</dl>
 	<hr />
-	<div class="alert alert-dismissible alert-info">
-		<h4 class="alert-heading">المجموعات</h4>
-	</div>
 	@foreach (var group in Model.EnseignantGroupes) {
-		<dl class="row">
-			<dt class="col-sm-2">الرقم</dt>
-			<dd class="col-sm-10">@group.Numero</dd>
-			<dt class="col-sm-2">الإسم</dt>
-			<dd class="col-sm-10">@group.Nom</dd>
-		</dl>
-		<div class="alert alert-dismissible alert-success">
-			<h4 class="alert-heading">طلبة المجموعة <span class="text-info">@group.Nom</span> رقم <span class="text-info">@group.Numero</span></h4>
+		<div class="alert alert-dismissible alert-info">
+			<h4 class="alert-heading">المجموعة @group.Numero @group.Nom</h4>
 		</div>
 		<table class="table table-hover">
 			<thead>
@@ -65,10 +56,11 @@
 					<th scope="col">الهاتف</th>
 					<th scope="col">البريد الإلكتروني</th>
 					<th scope="col">العنوان</th>
+					<th scope="col">التفاصيل</th>
 				</tr>
 			</thead>
-			@foreach (var etudiant in group.GroupeEtudiants) {
-				<tbody>
+			<tbody>
+				@foreach (var etudiant in group.GroupeEtudiants) {
 					<tr>
 						<td>@etudiant.Nom</td>
 						<td>@etudiant.Prenom</td>
@@ -76,9 +68,10 @@
 						<td>@etudiant.Phone</td>
 						<td>@etudiant.Email</td>
 						<td>@etudiant.Adresse</td>
+						<td><a asp-action="StudentTrack" asp-route-id="@etudiant.Id">الطالب</a></td>
 					</tr>
-				</tbody>
-			}
+				}
+			</tbody>
 		</table>
 		<hr />
 	}

@@ -267,9 +267,15 @@ namespace Ecole_Coranique.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "00177a50-b7ce-45cc-b3a5-80832e10ddc2", 0, "0f761900-25dd-4f96-a93e-06432b3b3076", "teacher@email.com", true, false, null, "TEACHER@EMAIL.COM", "TEACHER@EMAIL.COM", "AQAAAAEAACcQAAAAEJWNjSNzPWaNATq7ewn5LHfp8nI1Na1SgzODgEkwWwL3bW027dMt170Pxgn9ZD3PTw==", null, false, "b5ffd3e8-347c-4c85-8137-c74ab88bb0cf", false, "teacher@email.com" },
-                    { "40d3f99e-0345-4f90-904d-1b423434e791", 0, "1a54f0eb-17d3-4d71-8e4f-ff9c5527cf88", "student@email.com", true, false, null, "STUDENT@EMAIL.COM", "STUDENT@EMAIL.COM", "AQAAAAEAACcQAAAAEPKGinAyD6eG2U/W158T4iwnHCMTZq2PKdNw3lpFmLzxMNonW8jPPDkufxtb2mki4g==", null, false, "aee0907a-a18c-427e-a27c-f156536c8e45", false, "student@email.com" },
-                    { "4f891607-8801-4c6f-8d3d-c17723a8056e", 0, "998667d2-ba92-4276-abbd-44f963a3e17b", "admin@email.com", true, false, null, "ADMIN@EMAIL.COM", "ADMIN@EMAIL.COM", "AQAAAAEAACcQAAAAELEovmmNmnxtx7vdCo3Ac4wGg5fhgazMuihOpMkNJvSTJFvhvCdVraqDlBHihPEMwQ==", null, false, "437b8771-400a-40a6-8237-886b05f1ec63", false, "admin@email.com" }
+                    { "149da79b-cbd6-4ee5-bd64-2782770ed5a6", 0, "c528b615-3228-4553-b118-f52f750f13f7", "enseignat.troisieme@email.com", true, false, null, "ENSEIGNAT.TROISIEME@EMAIL.COM", "ENSEIGNAT.TROISIEME@EMAIL.COM", "AQAAAAEAACcQAAAAEHhZ3yoIZZusdHL2hW7lNNmpMlGOtNOzTo6d3iT85XWHP7l3menIsJzbmdbZ36oVow==", null, false, "3d2e9610-193e-4c3e-a057-949302cb5a48", false, "enseignat.troisieme@email.com" },
+                    { "1f085b34-69b0-49ba-a182-dab50bf0bda7", 0, "54a39d77-d332-41eb-8d4a-e50d2614c73a", "etudiant.troisieme@email.com", true, false, null, "ETUDIANT.TROISIEME@EMAIL.COM", "ETUDIANT.TROISIEME@EMAIL.COM", "AQAAAAEAACcQAAAAECFanY2cYl4izgycSu1R/KHC4tPE7Tg61H8aHpeXlXdLc7decoXQMIla229Nbb3+Gw==", null, false, "5eae586a-5a2d-49fd-ae8a-389fd1f434a1", false, "etudiant.troisieme@email.com" },
+                    { "31e43467-b393-4895-a1d6-da6fbf87e7a2", 0, "520d4551-90c7-4d34-aebf-671db699fd5b", "etudiant.quatrieme@email.com", true, false, null, "ETUDIANT.QUATRIEME@EMAIL.COM", "ETUDIANT.QUATRIEME@EMAIL.COM", "AQAAAAEAACcQAAAAEHo+LmSWkBa+tDPGou0AOc2+mWUGeP8NE5xfL5XYdI/p4n4GwCAPVdx1a2qbtM++iw==", null, false, "603bb699-4269-427d-a567-2e42d618f16b", false, "etudiant.quatrieme@email.com" },
+                    { "47367b6d-edad-467b-a373-7d4fafa3e875", 0, "a02da170-83ac-40c2-a133-b1988d0dd023", "etudiant.cinquieme@email.com", true, false, null, "ETUDIANT.CINQUIEME@EMAIL.COM", "ETUDIANT.CINQUIEME@EMAIL.COM", "AQAAAAEAACcQAAAAEDnoVOC68phle3XlccDAzB8q39XMPRrltcgmx6YuGGcjPPaQwjKQeepsbRe5OcGKlA==", null, false, "18082a70-63fa-4c05-98fd-5885a4033ce4", false, "etudiant.cinquieme@email.com" },
+                    { "6438a460-46fa-4038-944e-df4e9869ce0d", 0, "112a2cbc-fd27-4960-a3a1-c72ff1d98e06", "enseignat.second@email.com", true, false, null, "ENSEIGNAT.SECOND@EMAIL.COM", "ENSEIGNAT.SECOND@EMAIL.COM", "AQAAAAEAACcQAAAAEETF3Rw36kBFyWqyDEmBsL8LyidTEVMwhbxbAvRLu7eMs0JpQ1QEq8S+TwD5ja2M2Q==", null, false, "322a27de-66a7-4a20-a7f1-212985712e1e", false, "enseignat.second@email.com" },
+                    { "b69eed44-a66a-43ec-8698-6cb83f87e28a", 0, "e2fdcc94-3dc5-469c-8c46-57cbad5a41d5", "etudiant.premier@email.com", true, false, null, "ETUDIANT.PREMIER@EMAIL.COM", "ETUDIANT.PREMIER@EMAIL.COM", "AQAAAAEAACcQAAAAEP5Vvf9p/qAw/bcnUs+untPOhIdN6XclriyNOQhV4aAEZPahBXTS04mphID4sEzDyQ==", null, false, "7adc6fd3-0e6d-4196-8baf-e94151276a2e", false, "etudiant.premier@email.com" },
+                    { "cc424f74-d7cf-4d26-87cf-b790679c8e3b", 0, "a40566bf-b97b-4866-9b18-1a1f48dd7679", "etudiant.second@email.com", true, false, null, "ETUDIANT.SECOND@EMAIL.COM", "ETUDIANT.SECOND@EMAIL.COM", "AQAAAAEAACcQAAAAEMXJqEm9zC7r19Ct1k815mc9wl4rq+T4x/fk/ruKM6bo+TCLkgGMEpR6qpp5JuaoHg==", null, false, "6df88a07-0da2-4051-b72b-0380f46e4eb7", false, "etudiant.second@email.com" },
+                    { "e3df062f-6566-4238-88ad-7f5bcee653d7", 0, "7dd90cdf-08c4-4dce-bab1-b8ce7bfca09d", "enseignat.premier@email.com", true, false, null, "ENSEIGNAT.PREMIER@EMAIL.COM", "ENSEIGNAT.PREMIER@EMAIL.COM", "AQAAAAEAACcQAAAAEGvDnmOimsMVVb7wEpU/zkC0LWGo8O3f4Wp2DRSKRKe8Zbb+1RgAv9tUIWF5WNHDaA==", null, false, "3f744d36-3cc8-4934-bb98-8e65e9eec2ec", false, "enseignat.premier@email.com" },
+                    { "fa5ab430-ac77-46b5-b4c2-48182b1a7694", 0, "9e96cef2-24e2-4a19-ab00-d4fe463a3b56", "admin@email.com", true, false, null, "ADMIN@EMAIL.COM", "ADMIN@EMAIL.COM", "AQAAAAEAACcQAAAAELC+UQsM94NVlxhHNfdFc1/of0TVRcBiQexk/TsBbEpFiIU2J75bcxH4X/yEmq5R7w==", null, false, "86540a06-d303-43fe-aa73-df4852ae62fd", false, "admin@email.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -318,13 +324,7 @@ namespace Ecole_Coranique.Data.Migrations
                     { 26, "( أفمن يعلم ) من سورة الرعد (13:19) إلى سورة إبراهيم (14:52)", "الحزب 26", 26 },
                     { 27, "( ربما ) من سورة الحجر (15:1) إلى سورة النحل (16:50)", "الحزب 27", 27 },
                     { 28, "( وقال الله لا تتخذوا ) من سورة النحل (16:51) إلى (16:128)", "الحزب 28", 28 },
-                    { 29, "( سبحن ) من سورة الاسراء (17:1) إلى (17:98)", "الحزب 29", 29 },
-                    { 30, "( أولم يروا ) من سورة الاسراء (17:99) إلى سورة الكهف (18:74)", "الحزب 30", 30 },
-                    { 31, "( قال ألم أقل ) من سورة الكهف (18:75) إلى سورة مريم (19:98)", "الحزب 31", 31 },
-                    { 32, "( طه ) من سورة طه (20:1) إلى (20:135)", "الحزب 32", 32 },
-                    { 33, "( اقترب ) من سورة الأنبياء (21:1) إلى (21:112)", "الحزب 33", 33 },
-                    { 34, "( يأيها الناس ) من سورة الحج (22:1) إلى (22:78)", "الحزب 34", 34 },
-                    { 35, "( قدأفلح ) من سورة المؤمنون (23:1) إلى سورة النور (24:20)", "الحزب 35", 35 }
+                    { 29, "( سبحن ) من سورة الاسراء (17:1) إلى (17:98)", "الحزب 29", 29 }
                 });
 
             migrationBuilder.InsertData(
@@ -333,6 +333,12 @@ namespace Ecole_Coranique.Data.Migrations
                 columns: new[] { "Id", "Description", "Nom", "Numero" },
                 values: new object[,]
                 {
+                    { 30, "( أولم يروا ) من سورة الاسراء (17:99) إلى سورة الكهف (18:74)", "الحزب 30", 30 },
+                    { 31, "( قال ألم أقل ) من سورة الكهف (18:75) إلى سورة مريم (19:98)", "الحزب 31", 31 },
+                    { 32, "( طه ) من سورة طه (20:1) إلى (20:135)", "الحزب 32", 32 },
+                    { 33, "( اقترب ) من سورة الأنبياء (21:1) إلى (21:112)", "الحزب 33", 33 },
+                    { 34, "( يأيها الناس ) من سورة الحج (22:1) إلى (22:78)", "الحزب 34", 34 },
+                    { 35, "( قدأفلح ) من سورة المؤمنون (23:1) إلى سورة النور (24:20)", "الحزب 35", 35 },
                     { 36, "( لاتتبعوا ) من سورة النور (24:21) إلى سورة الفرقان (25:20)", "الحزب 36", 36 },
                     { 37, "( وقال الذين ) من سورة الفرقان (25:21) إلى سورة الشعراء (26:110)", "الحزب 37", 37 },
                     { 38, "( قالوا أنومن ) من سورة الشعراء (26:111)  إلى سورة النمل (27:55)", "الحزب 38", 38 },
@@ -382,9 +388,15 @@ namespace Ecole_Coranique.Data.Migrations
                 columns: new[] { "Id", "ClaimType", "ClaimValue", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Concern", "Admin", "4f891607-8801-4c6f-8d3d-c17723a8056e" },
-                    { 2, "Concern", "Teacher", "00177a50-b7ce-45cc-b3a5-80832e10ddc2" },
-                    { 3, "Concern", "Student", "40d3f99e-0345-4f90-904d-1b423434e791" }
+                    { 1, "Concern", "Admin", "fa5ab430-ac77-46b5-b4c2-48182b1a7694" },
+                    { 2, "Concern", "Teacher", "e3df062f-6566-4238-88ad-7f5bcee653d7" },
+                    { 3, "Concern", "Teacher", "6438a460-46fa-4038-944e-df4e9869ce0d" },
+                    { 4, "Concern", "Teacher", "149da79b-cbd6-4ee5-bd64-2782770ed5a6" },
+                    { 5, "Concern", "Student", "b69eed44-a66a-43ec-8698-6cb83f87e28a" },
+                    { 6, "Concern", "Student", "cc424f74-d7cf-4d26-87cf-b790679c8e3b" },
+                    { 7, "Concern", "Student", "1f085b34-69b0-49ba-a182-dab50bf0bda7" },
+                    { 8, "Concern", "Student", "31e43467-b393-4895-a1d6-da6fbf87e7a2" },
+                    { 9, "Concern", "Student", "47367b6d-edad-467b-a373-7d4fafa3e875" }
                 });
 
             migrationBuilder.InsertData(
@@ -394,8 +406,20 @@ namespace Ecole_Coranique.Data.Migrations
                 values: new object[,]
                 {
                     { 1, 3, "مجموعة البنات", 1 },
-                    { 2, 4, "مجموعة الصباح", 2 },
-                    { 3, 1, "مجموعة المساء", 3 }
+                    { 2, 2, "مجموعة الصباح", 2 },
+                    { 3, 1, "مجموعة المساء", 3 },
+                    { 4, 1, "مجموعة نهاية الأسبوع", 4 }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "ec",
+                table: "IdentificationEnseignants",
+                columns: new[] { "EnseignantId", "IdentityUserId" },
+                values: new object[,]
+                {
+                    { 1, "e3df062f-6566-4238-88ad-7f5bcee653d7" },
+                    { 2, "6438a460-46fa-4038-944e-df4e9869ce0d" },
+                    { 3, "149da79b-cbd6-4ee5-bd64-2782770ed5a6" }
                 });
 
             migrationBuilder.InsertData(
@@ -410,7 +434,15 @@ namespace Ecole_Coranique.Data.Migrations
                     { 4, "مدينة الصخور، الرغاية", "so.sidou33@bmail.com", 2, new DateTime(1990, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "سيدو", "05 04 04 04", "سفيان" },
                     { 5, "حي بولوغين، الجزائر العاصمة", "samimi@gmail.com", 1, new DateTime(1998, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "سليمة", "05 05 05 05", "سميحة" },
                     { 6, "حي خمسة منازل، الجزائر العاصمة", "fati.bb@gmail.com", 1, new DateTime(2005, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "بوفطوم", "05 06 06 06", "فاطمة" },
-                    { 7, "طريق الأكاسيا، المدية", "bousemar.sam@gmail.com", 1, new DateTime(1999, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "بو سمار", "05 07 07 07", "سميرة" }
+                    { 7, "طريق الأكاسيا، المدية", "bousemar.sam@gmail.com", 1, new DateTime(1999, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "بوسمار", "05 07 07 07", "سميرة" },
+                    { 8, "حي الأكاديمي، المدية", "ameur.am@gmail.com", 4, new DateTime(1996, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "معمر", "05 08 08 08", "عمر" },
+                    { 9, "شارع الورود، البليدة", "anissa.nissou@gmail.com", 1, new DateTime(1994, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "ليونس", "05 09 09 09", "أنيسة" },
+                    { 10, "حي الأربع طرق، تيبازة", "hamdi.h@gmail.com", 1, new DateTime(1992, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "حمدي", "05 10 10 10", "حميدة" },
+                    { 11, "حي تاكبو، المدية", "bou7.hmidah@gmail.com", 4, new DateTime(1978, 9, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "بوحمد ", "05 11 11 11", "محمود" },
+                    { 12, "حي تاكبو، المدية", "lounis.anis@gmail.com", 2, new DateTime(1997, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "ليونس ", "05 12 12 12", "أنيس" },
+                    { 13, "حى باب القواس، المدية", "elrachid03@gmail.com", 4, new DateTime(2003, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "بوراشدي", "05 13 13 13", "رشيد" },
+                    { 14, "طريق الأكاسيا، المدية", "zaki7mimi@gmail.com", 4, new DateTime(2005, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "حميمي", "05 14 14 14", "زكريا" },
+                    { 15, "حى باب القواس، المدية", "nassirou93@gmail.com", 2, new DateTime(1993, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "بن ناصر", "05 15 15 15", "نصرالدين" }
                 });
 
             migrationBuilder.InsertData(
@@ -439,6 +471,19 @@ namespace Ecole_Coranique.Data.Migrations
 
             migrationBuilder.InsertData(
                 schema: "ec",
+                table: "IdentificationEtudiants",
+                columns: new[] { "EtudiantId", "IdentityUserId" },
+                values: new object[,]
+                {
+                    { 1, "b69eed44-a66a-43ec-8698-6cb83f87e28a" },
+                    { 3, "cc424f74-d7cf-4d26-87cf-b790679c8e3b" },
+                    { 5, "1f085b34-69b0-49ba-a182-dab50bf0bda7" },
+                    { 7, "31e43467-b393-4895-a1d6-da6fbf87e7a2" },
+                    { 9, "47367b6d-edad-467b-a373-7d4fafa3e875" }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "ec",
                 table: "Revisions",
                 columns: new[] { "Id", "Date", "EtudiantId", "HizbId", "HuitiemeId" },
                 values: new object[,]
@@ -447,18 +492,38 @@ namespace Ecole_Coranique.Data.Migrations
                     { 2, new DateTime(2022, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 1, 1 },
                     { 3, new DateTime(2022, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 1, 1 },
                     { 4, new DateTime(2022, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, 1, 1 },
-                    { 5, new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, 1 },
-                    { 6, new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 1, 1 },
-                    { 7, new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 1, 2 },
-                    { 8, new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, 1, 2 },
-                    { 9, new DateTime(2022, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, 2 },
-                    { 10, new DateTime(2022, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 1, 2 },
-                    { 11, new DateTime(2022, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 1, 3 },
-                    { 12, new DateTime(2022, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, 1, 3 },
-                    { 13, new DateTime(2022, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, 2 },
-                    { 14, new DateTime(2022, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 1, 4 },
-                    { 15, new DateTime(2022, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 1, 3 },
-                    { 16, new DateTime(2022, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, 1, 4 }
+                    { 5, new DateTime(2022, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, 1, 1 },
+                    { 6, new DateTime(2022, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, 1, 1 },
+                    { 7, new DateTime(2022, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, 1, 1 },
+                    { 8, new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, 1 },
+                    { 9, new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 1, 1 },
+                    { 10, new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 1, 2 },
+                    { 11, new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, 1, 2 },
+                    { 12, new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, 1, 2 },
+                    { 13, new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, 1, 2 },
+                    { 14, new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, 1, 3 },
+                    { 15, new DateTime(2022, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, 2 },
+                    { 16, new DateTime(2022, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 1, 2 },
+                    { 17, new DateTime(2022, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 1, 3 },
+                    { 18, new DateTime(2022, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, 1, 3 },
+                    { 19, new DateTime(2022, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, 1, 3 },
+                    { 20, new DateTime(2022, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, 1, 4 },
+                    { 21, new DateTime(2022, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, 1, 4 }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "ec",
+                table: "Revisions",
+                columns: new[] { "Id", "Date", "EtudiantId", "HizbId", "HuitiemeId" },
+                values: new object[,]
+                {
+                    { 22, new DateTime(2022, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, 2 },
+                    { 23, new DateTime(2022, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 1, 4 },
+                    { 24, new DateTime(2022, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 1, 3 },
+                    { 25, new DateTime(2022, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, 1, 5 },
+                    { 26, new DateTime(2022, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, 1, 4 },
+                    { 27, new DateTime(2022, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, 1, 6 },
+                    { 28, new DateTime(2022, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, 1, 5 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -568,21 +633,93 @@ namespace Ecole_Coranique.Data.Migrations
 
             migrationBuilder.DeleteData(
                 schema: "ec",
-                table: "AspNetUsers",
+                table: "AspNetUserClaims",
                 keyColumn: "Id",
-                keyValue: "00177a50-b7ce-45cc-b3a5-80832e10ddc2");
+                keyValue: 4);
+
+            migrationBuilder.DeleteData(
+                schema: "ec",
+                table: "AspNetUserClaims",
+                keyColumn: "Id",
+                keyValue: 5);
+
+            migrationBuilder.DeleteData(
+                schema: "ec",
+                table: "AspNetUserClaims",
+                keyColumn: "Id",
+                keyValue: 6);
+
+            migrationBuilder.DeleteData(
+                schema: "ec",
+                table: "AspNetUserClaims",
+                keyColumn: "Id",
+                keyValue: 7);
+
+            migrationBuilder.DeleteData(
+                schema: "ec",
+                table: "AspNetUserClaims",
+                keyColumn: "Id",
+                keyValue: 8);
+
+            migrationBuilder.DeleteData(
+                schema: "ec",
+                table: "AspNetUserClaims",
+                keyColumn: "Id",
+                keyValue: 9);
 
             migrationBuilder.DeleteData(
                 schema: "ec",
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "40d3f99e-0345-4f90-904d-1b423434e791");
+                keyValue: "149da79b-cbd6-4ee5-bd64-2782770ed5a6");
 
             migrationBuilder.DeleteData(
                 schema: "ec",
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "4f891607-8801-4c6f-8d3d-c17723a8056e");
+                keyValue: "1f085b34-69b0-49ba-a182-dab50bf0bda7");
+
+            migrationBuilder.DeleteData(
+                schema: "ec",
+                table: "AspNetUsers",
+                keyColumn: "Id",
+                keyValue: "31e43467-b393-4895-a1d6-da6fbf87e7a2");
+
+            migrationBuilder.DeleteData(
+                schema: "ec",
+                table: "AspNetUsers",
+                keyColumn: "Id",
+                keyValue: "47367b6d-edad-467b-a373-7d4fafa3e875");
+
+            migrationBuilder.DeleteData(
+                schema: "ec",
+                table: "AspNetUsers",
+                keyColumn: "Id",
+                keyValue: "6438a460-46fa-4038-944e-df4e9869ce0d");
+
+            migrationBuilder.DeleteData(
+                schema: "ec",
+                table: "AspNetUsers",
+                keyColumn: "Id",
+                keyValue: "b69eed44-a66a-43ec-8698-6cb83f87e28a");
+
+            migrationBuilder.DeleteData(
+                schema: "ec",
+                table: "AspNetUsers",
+                keyColumn: "Id",
+                keyValue: "cc424f74-d7cf-4d26-87cf-b790679c8e3b");
+
+            migrationBuilder.DeleteData(
+                schema: "ec",
+                table: "AspNetUsers",
+                keyColumn: "Id",
+                keyValue: "e3df062f-6566-4238-88ad-7f5bcee653d7");
+
+            migrationBuilder.DeleteData(
+                schema: "ec",
+                table: "AspNetUsers",
+                keyColumn: "Id",
+                keyValue: "fa5ab430-ac77-46b5-b4c2-48182b1a7694");
 
             migrationBuilder.RenameTable(
                 name: "AspNetUserTokens",

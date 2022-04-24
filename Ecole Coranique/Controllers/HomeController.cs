@@ -29,7 +29,7 @@ namespace Ecole_Coranique.Controllers
                 if (id == 0) {
                     return NotFound();
                 }
-                return RedirectToAction("TeacherTrack", "Tracking", new { Id = 1 });
+                return RedirectToAction("TeacherTrack", "Tracking", new { Id = id });
             } else if ((await authService.AuthorizeAsync(User, AppPolicyName.StudentTrack)).Succeeded) {
                 var id = CurrentStudentId(_context, User);
                 if (id == 0) {

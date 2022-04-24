@@ -2,6 +2,9 @@
 	<li class="nav-item">
 		<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">الصفحة الرئيسية</a>
 	</li>
+	<li>
+		<a class="nav-link text-dark" asp-area="" asp-controller="Tracking" asp-action="AdminTrack">مسار المدرسة</a>
+	</li>
 	<li class="nav-item dropdown">
 		<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">الأنشطة</a>
 		<div class="dropdown-menu">
@@ -25,13 +28,6 @@
 			<a class="nav-link text-dark" asp-area="" asp-controller="IdentificationEtudiants" asp-action="Index">تحديد الطلاب</a>
 			<a class="nav-link text-dark" asp-area="" asp-controller="IdentificationEnseignants" asp-action="Index">تحديد المدرسين</a>
 			<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">خصوصية</a>
-		</div>
-	</li>
-	<li class="nav-item dropdown">
-		<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">المسار</a>
-		<div class="dropdown-menu">
-			<a class="nav-link text-dark" asp-area="" asp-controller="Tracking" asp-action="StudentTrack" asp-route-id=1>الطالب</a>
-			<a class="nav-link text-dark" asp-area="" asp-controller="Tracking" asp-action="TeacherTrack" asp-route-id=3>المدرس</a>
 		</div>
 	</li>
 </ul>

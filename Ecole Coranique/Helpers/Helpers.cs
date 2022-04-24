@@ -1,5 +1,6 @@
 ﻿using Ecole_Coranique.Data;
 using Ecole_Coranique.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
@@ -27,16 +28,35 @@ public class Helpers
         identityUsersNotAlreadyTaken = identityUsersNotAlreadyTaken.Where(x => !administrators.Select(x => x.UserId).Contains(x.Id));
         return identityUsersNotAlreadyTaken;
     }
+    public static int CurrentTeacherId(ApplicationDbContext context, ClaimsPrincipal user) {
+        var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+        var idCurrent = context.IdentificationEnseignants
+                .Where(x => x.IdentityUserId.Equals(userId)).Select(x => x.EnseignantId).FirstOrDefault();
+        return idCurrent;
+    }
     public static int CurrentStudentId(ApplicationDbContext context, ClaimsPrincipal user) {
         var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
         var idCurrent = context.IdentificationEtudiants
                 .Where(x => x.IdentityUserId.Equals(userId)).Select(x => x.EtudiantId).FirstOrDefault();
         return idCurrent;
     }
-    public static int CurrentTeacherId(ApplicationDbContext context, ClaimsPrincipal user) {
-        var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
-        var idCurrent = context.IdentificationEnseignants
-                .Where(x => x.IdentityUserId.Equals(userId)).Select(x => x.EnseignantId).FirstOrDefault();
-        return idCurrent;
+    /// <summary>
+    /// Generate an Identity User from parameters
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="username"></param>
+    /// <param name="password"></param>
+    /// <returns></returns>
+    public static IdentityUser InitializeIdentityUser(string userId, string username, string password) {
+        var identityUser = new IdentityUser {
+            Id = userId, // Primary key
+            Email = username,
+            NormalizedEmail = username.ToUpper(),
+            UserName = username,
+            NormalizedUserName = username.ToUpper(),
+            EmailConfirmed = true,
+        };
+        identityUser.PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(identityUser, password);
+        return identityUser;
     }
 }
